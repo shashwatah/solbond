@@ -6,6 +6,9 @@ use solana_program::program_error::ProgramError;
 pub enum SolbondError {
     #[error("Invalid Instruction")]
     InvalidInstruction,
+
+    #[error("Account is not rent-exempt")]
+    NotRentExempt,
 }
 
 impl From<SolbondError> for ProgramError {

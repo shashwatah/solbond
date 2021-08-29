@@ -4,6 +4,13 @@ use solana_program::program_error::ProgramError;
 use crate::error::SolbondError::InvalidInstruction;
 
 pub enum SolbondInstruction {
+    /// Accounts expected:
+    ///
+    /// 0. `[signer]` The account of the person initializing the Solbond, i.e spouse1
+    /// 1. `[writable]` Solbond account that should be created prior to this instruction and owned by the initializer
+    /// 3. `[]` spouse2's account  
+    /// 4. `[]` The rent sysvar
+    /// 5. `[]` The token program
     InitSolbond {  
         spouse1_name: String,
         spouse2_name: String,

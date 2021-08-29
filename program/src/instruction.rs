@@ -1,7 +1,7 @@
-use std::convert::TryInto;
+// use std::convert::TryInto;
 use solana_program::program_error::ProgramError; 
 
-use crate::error::SolbondError::{self, InvalidInstruction};
+use crate::error::SolbondError::InvalidInstruction;
 
 pub enum SolbondInstruction {
     InitSolbond {  
@@ -14,7 +14,7 @@ pub enum SolbondInstruction {
 
 impl SolbondInstruction {
     pub fn unpack(input: &[u8]) -> Result<Self, ProgramError> {
-        let (tag, rest) = input.split_first().ok_or(InvalidInstruction)?;
+        let (tag, _rest) = input.split_first().ok_or(InvalidInstruction)?;
 
         Ok(match tag {
             0 => Self::InitSolbond {

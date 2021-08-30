@@ -24,7 +24,6 @@ impl Processor {
             SolbondInstruction::InitSolbond {
                 spouse1_name,
                 spouse2_name,
-                location,
                 timestamp,
             } => {
                 msg!("Instruction: InitSolbond");
@@ -32,7 +31,6 @@ impl Processor {
                     accounts,
                     spouse1_name,
                     spouse2_name,
-                    location,
                     timestamp,
                     program_id,
                 )
@@ -44,7 +42,6 @@ impl Processor {
         accounts: &[AccountInfo],
         spouse1_name: String,
         spouse2_name: String,
-        location: String,
         timestamp: u32,
         program_id: &Pubkey,
     ) -> ProgramResult {

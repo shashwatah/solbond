@@ -741,6 +741,7 @@ dependencies = [
 name = "solbond"
 version = "0.1.0"
 dependencies = [
+ "arrayref",
  "solana-program",
  "thiserror",
 ]

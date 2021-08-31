@@ -8,7 +8,7 @@ use solana_program::{
     sysvar::{rent::Rent, Sysvar}
 };
 
-use crate::{error::SolbondError::NotRentExempt, instruction::SolbondInstruction};
+use crate::{error::SolbondError::NotRentExempt, instruction::SolbondInstruction, state::Solbond};
 
 pub struct Processor;
 
@@ -61,11 +61,22 @@ impl Processor {
             return Err(NotRentExempt.into());
         }
 
-        // let mut escrow_info = Escrow::unpack_unchecked(&escrow_account.data.borrow())?;
-        // if escrow_info.is_initialized() {
-        //     return Err(ProgramError::AccountAlreadyInitialized);
-        // }
+        let mut solbond_info = Solbond::unpack_unchecked(&solbond_account.data.borrow())?;
+        if solbond_info.is_initialized() {
+            return Err(ProgramError::AccountAlreadyInitialized);
+        }
         
+        solbond_info.is_initialized = true;
+        solbond_info.validity1 = true;
+        solbond_info.validity2 = false;
+        solbond_info.spouse1_pubkey = *spouse1_account.key;
+        solbond_info.spouse2_pubkey = *spouse2_account.key;
+        solbond_info.spouse1_name = spouse1_name;
+        solbond_info.spouse2_name = spouse2_name;
+        solbond_info.timestamp = timestamp;
+
+        Solbond::pack(solbond_info, &mut solbond_account.data.borrow_mut())?;
+
         Ok(())
     }
 }

@@ -77,6 +77,10 @@ impl Processor {
 
         Solbond::pack(solbond_info, &mut solbond_account.data.borrow_mut())?;
 
+        // below is the code for creating PDA to transfer ownership to, might not need it but keeping it anyway
+        // might have to change the seed later on
+        // let (pda, _bump_seed) = Pubkey::find_program_address(&[b"solbond"], program_id);
+
         Ok(())
     }
 }

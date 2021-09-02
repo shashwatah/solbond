@@ -5,7 +5,7 @@ html {
     width: 100%;
 }
 
-#index-main-container {
+#main-container {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -14,24 +14,7 @@ html {
     width: 100%;
 }
 
-#index-bg-container {
-    position: relative;
-    float: left;
-    z-index: 1;
-    height: 100%;
-    width: 25%;
-}
-
-#index-content-container {
-    position: relative;
-    float: right;
-    z-index: 1;
-    height: 100%;
-    width: 75%;
-    /* background: #eeedee */
-}
-
-#index-navbar {
+#navbar {
     position: relative;
     top: 0px;
     left: 0px;
@@ -39,7 +22,12 @@ html {
     width: 100%;    
 }
 
-#index-title {
+#navbar > #navbar-title,
+#navbar > #wallet-container {
+    vertical-align: middle;
+}
+
+#navbar-title {
     position: relative;
     float: left;
     color: #0D0533;
@@ -50,16 +38,16 @@ html {
     font-weight: bold;
 }
 
-#index-title-icon { 
+#navbar-title-icon { 
     margin-right: 10px;
     height: 35px;
 }
 
-#index-title > #index-title-icon {
+#navbar-title > #navbar-title-icon {
     vertical-align: middle;
 }
 
-#connect-wallet {
+#wallet-container {
     position: relative;
     float: right;
     background: white;
@@ -70,7 +58,11 @@ html {
     border-radius: 5px;
 }
 
-#connect-wallet-btn {
+#wallet-container:hover {
+    background: rgba(255,255,255,0.7);
+}
+
+#wallet-btn {
     height: 50px;
     width: 150px;
     color: #0D0533;
@@ -82,7 +74,7 @@ html {
     cursor: pointer;
 }
 
-#index-content-container {
+#content-container {
     float: none;
     height: 500px;
     width: calc(100% - 400px);
@@ -91,7 +83,7 @@ html {
     text-align: center;
 }
 
-#index-content-title {
+#content-title {
     position: relative;
     top: 175px;
     font-size: 75px;
@@ -102,7 +94,7 @@ html {
     color: #0D0533;
 }
 
-#index-content-btns-container {
+#content-btns-container {
     position: relative;
     margin: auto;
     height: 75px;
@@ -113,7 +105,7 @@ html {
     /* background-color: lightskyblue; */
 }
 
-.index-content-btn-container {
+#content-btns-container .btn-container {
     position: relative;
     height: 100%;
     width: 350px;
@@ -124,15 +116,15 @@ html {
     cursor: pointer;
 }
 
-.index-content-btn-container:nth-child(1) {
+#content-btns-container .btn-container:nth-child(1) {
     margin-right: 25px;
 }
 
-.index-content-btn-container:hover {
+#content-btns-container .btn-container:hover {
     background: rgba(255,255,255,0.7);
 }
 
-.index-btn {
+#content-btns-container .btn-container .btn {
     background: none;
     position: relative;
     height: 100%;
@@ -145,28 +137,26 @@ html {
     cursor: pointer;
 }
 
-.index-btn > img,
-.index-btn > span {
+#content-btns-container .btn-container .btn > img,
+#content-btns-container .btn-container .btn > span {
     vertical-align: middle;
 }
 
-.index-btn-ico {
+#content-btns-container .btn-container .btn .btn-ico {
     height: 25px;
     margin-right: 7px;
 }
 
-#index-footer {
+#footer {
     position: fixed;
     height: 75px;
     width: 100%;
     left: 0px;
     bottom: 0px;
-    /* background: lightgoldenrodyellow; */
 }
 
-#index-footer-text {
+#footer-text {
     position: relative;
-    /* top: 30px; */
     font-size: 16px;
     font-weight: bold;
     font-family: "Lato", sans-serif;
@@ -175,7 +165,7 @@ html {
     right: 200px;
 }
 
-#index-footer-logo {
+#footer-logo {
     position: relative;
     float: right;
     height: 30px;

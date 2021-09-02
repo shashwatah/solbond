@@ -3,41 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Solbond</title>
-    <link rel="stylesheet" href="css/index.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/index.css" type="text/css"/>
     <link rel="shortcut icon" href="assets/images/solbond-logo.png" type="image/png" />
 </head>
 <body>
-    <div class="container" id="index-main-container">
-        <div class="container" id="index-navbar">
-            <p id="index-title"><img src="assets/images/solbond-logo.png" type="image/png" id="index-title-icon"/>solbond</p>
-            <div class="container" id="connect-wallet">
-                <input type="button" id="connect-wallet-btn" value="Connect Wallet"/>    
+    <div id="main-container">
+        <div id="navbar">
+            <p id="navbar-title"><img src="assets/images/solbond-logo.png" type="image/png" id="navbar-title-icon" draggable="false"/>solbond</p>
+
+            <div id="wallet-container">
+                <input type="button" id="wallet-btn" value="Connect Wallet"/>    
             </div>
         </div>
 
-        <div class="container" id="index-content-container">
-            <p id="index-content-title">Weddings of the future.</p>
-            <div class="container" id="index-content-btns-container">
-                <div class="index-content-btn-container" id="register-btn-container">
-                    <button class="index-btn" id="register-btn">
-                        <img class="index-btn-ico" class="register-btn-ico" src="assets/images/register.png" type="image/png" draggable="false"/> <span>Register a Solbond</span>
+        <div id="content-container">
+            <p id="content-title">Weddings of the future.</p>
+
+            <div id="content-btns-container">
+                <div class="btn-container" id="register-btn-container">
+                    <button class="btn" id="register-btn">
+                        <img class="btn-ico" class="register-btn-ico" src="assets/images/register.png" type="image/png" draggable="false"/> <span>Register a Solbond</span>
                     </button> 
                 </div>
-                <div class="index-content-btn-container">
-                    <button class="index-btn" id="validate-btn">
-                        <img class="index-btn-ico" class="validate-btn-ico" src="assets/images/validate.png" type="image/png" draggable="false"/> <span>Validate a Solbond</span>
+
+                <div class="btn-container" id="validate-btn-container">
+                    <button class="btn" id="validate-btn">
+                        <img class="btn-ico" class="validate-btn-ico" src="assets/images/validate.png" type="image/png" draggable="false"/> <span>Validate a Solbond</span>
                     </button> 
                 </div>
             </div>
         </div>
 
-        <div class="container" id="index-footer">
-            <p id="index-footer-text">powered by <a href="https://www.solana.com"><img id="index-footer-logo" src="assets/images/solana-logo.png" type="image/png" draggable="false"/></a></p>            
+        <div id="footer">
+            <p id="footer-text">powered by <a href="https://www.solana.com"><img id="footer-logo" src="assets/images/solana-logo.png" type="image/png" draggable="false"/></a></p>            
         </div>
     </div>
 
-    <script src="js/utils/three.js"></script>
-    <script src="js/utils/vanta.fog.js"></script>
-    <script src="js/index.js"></script>
+    <script src="scripts/utils/three.js"></script>
+    <script src="scripts/utils/vanta.fog.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
 </html>

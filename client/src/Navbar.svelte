@@ -35,7 +35,7 @@
     color: #0d0533;
     font-size: 30px;
     left: 200px;
-    top: -10px;
+    top: 10px;
     font-family: "Lato", sans-serif;
     font-weight: bold;
   }
@@ -54,7 +54,7 @@
     float: right;
     background: white;
     right: 200px;
-    top: 15px;
+    top: 35px;
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: saturate(180%) blur(10px);
     border-radius: 5px;

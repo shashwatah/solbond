@@ -8,12 +8,8 @@
 <p id="title">Weddings of the future.</p>
 
 <div id="btns-container">
-  <div
-    on:click={btnClick("register")}
-    class="btn-container"
-    id="register-btn-container"
-  >
-    <button class="btn" id="register-btn">
+  <div class="btn-container" id="register-btn-container">
+    <button on:click={() => btnClick("register")} class="btn" id="register-btn">
       <img
         class="btn-ico"
         id="register-btn-ico"
@@ -27,7 +23,7 @@
   </div>
 
   <div class="btn-container" id="validate-btn-container">
-    <button on:click={btnClick("validate")} class="btn" id="validate-btn">
+    <button on:click={() => btnClick("validate")} class="btn" id="validate-btn">
       <img
         class="btn-ico"
         id="validate-btn-ico"
@@ -44,7 +40,7 @@
 <style>
   #title {
     position: relative;
-    top: 175px;
+    top: 125px;
     font-size: 75px;
     width: 775px;
     font-weight: bold;
@@ -58,7 +54,7 @@
     margin: auto;
     height: 75px;
     width: 725px;
-    top: 225px;
+    top: 175px;
     display: flex;
     flex-direction: row;
     /* background-color: lightskyblue; */

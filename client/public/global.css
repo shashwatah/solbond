@@ -14,3 +14,8 @@ html {
   height: 100%;
   width: 100%;
 }
+
+*:focus {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}

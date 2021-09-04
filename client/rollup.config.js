@@ -4,6 +4,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+import json from "@rollup/plugin-json";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -34,7 +35,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'public/build/bundle.js',
 	},
 	plugins: [
 		svelte({
@@ -54,7 +55,8 @@ export default {
 		// https://github.com/rollup/plugins/tree/master/packages/commonjs
 		resolve({
 			browser: true,
-			dedupe: ['svelte']
+			dedupe: ['svelte'],
+			preferBuiltins: false
 		}),
 		commonjs(),
 
@@ -68,7 +70,9 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+
+		json()
 	],
 	watch: {
 		clearScreen: false

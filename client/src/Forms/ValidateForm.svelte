@@ -1,108 +1,219 @@
 <script>
-    import { createEventDispatcher } from "svelte";
-    const dispatch = createEventDispatcher();
+  import { createEventDispatcher } from "svelte";
 
-    const back = () => dispatch("back");
+  const dispatch = createEventDispatcher();
 
-    let data = {
-        solbondAddress: "",
-        color: "Choose a color"
-    };
+  const back = () => dispatch("back");
 
-    const colorChange = () => {
-        data.color = document.getElementById("soul-color").value;
-        document.getElementById("soul-color-text").style.color = data.color;
+  let data = {
+    solbondAddress: "",
+    color: "Choose a color",
+  };
+
+  let pageIndex = 0;
+
+  const navBtnClick = (btn) => {
+    let pages = Array.from(document.getElementsByClassName("form-page"));
+    let navBtns = Array.from(document.getElementsByClassName("nav-btn"));
+
+    if (btn === "next") {
+      pageIndex = pageIndex + 1 < pages.length ? pageIndex + 1 : pageIndex;
+    } else {
+      pageIndex = pageIndex - 1 >= 0 ? pageIndex - 1 : pageIndex;
     }
+
+    for (let i = 0; i < pages.length; i++) {
+      if (i === pageIndex) {
+        pages[i].classList.remove("inactive");
+      } else {
+        if (!pages[i].classList.contains("incative")) {
+          pages[i].classList.add("inactive");
+        }
+      }
+    }
+
+    if (pageIndex > 0 && navBtns[0].classList.contains("hidden")) {
+      navBtns[0].classList.remove("hidden");
+    } else if (pageIndex === 0 && !navBtns[0].classList.contains("hidden")) {
+      navBtns[0].classList.add("hidden");
+    }
+
+    if (pageIndex === pages.length - 1 && navBtns[1].value === "Next") {
+      navBtns[1].value = "Submit";
+    } else if (pageIndex < pages.length - 1 && navBtns[1].value === "Submit") {
+      navBtns[1].value = "Next";
+    }
+  };
+
+  const colorChange = () => {
+    data.color = document.getElementById("soul-color").value;
+    document.getElementById("soul-color-text").style.color = data.color;
+  };
 </script>
 
 <div id="form-container">
-    <div id="form">
-        <button on:click={back}>back</button>
-        <div class="form-page">
-            <p class="form-page-title">Enter Solbond address</p>
-            <input type="text" class="form-page-input" placeholder="Solbond Address" maxlength="44">
-        </div>
-        <!-- <div class="form-page">
-            <p class="form-page-title">Choose a color for your soul</p>
-            <input type="text" class="form-page-input" id="soul-color-text" bind:value={data.color} disabled/>
-            <input type="color" id="soul-color" class="form-page-input" on:input={colorChange}/>
-        </div> -->
+  <div id="form">
+    <button id="back-btn" on:click={back}><img id="back-btn-ico" src="assets/images/back.png" type="image/png" alt="back-btn"/></button>
+    <div class="form-page">
+      <p class="form-page-title">Enter Solbond address</p>
+      <input
+        type="text"
+        class="form-page-input"
+        placeholder="Solbond Address"
+        maxlength="44"
+      />
     </div>
+    <div class="form-page inactive">
+      <p class="form-page-title">Choose a color for your soul</p>
+      <input
+        type="text"
+        class="form-page-input"
+        id="soul-color-text"
+        bind:value={data.color}
+        disabled
+      />
+      <input
+        type="color"
+        id="soul-color"
+        class="form-page-input"
+        on:input={colorChange}
+      />
+    </div>
+
+    <input
+      type="button"
+      value="Back"
+      class="nav-btn hidden"
+      id="back-nav"
+      on:click={() => {
+        navBtnClick("back");
+      }}
+    />
+    <input
+      type="button"
+      value="Next"
+      class="nav-btn"
+      id="next-nav"
+      on:click={() => {
+        navBtnClick("next");
+      }}
+    />
+  </div>
 </div>
 
 <style>
-    #form-container {
-        position: relative;
-        height: 100%;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.5);
-        backdrop-filter: saturate(180%) blur(10px);
-        border-radius: 7px;
-    }
+  #form-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-radius: 7px;
+  }
 
-    #form {
-        position: relative;
-        height: 100%;
-        width: 100%;
-        text-align: center;
-    }
+  #form {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+  }
 
-    .form-page {
-        position: relative;
-        height: 70%;
-        width: 70%;
-        text-align: left;
-        margin: auto;
-        top: 15%;
-    }
+  .form-page {
+    position: relative;
+    height: 70%;
+    width: 70%;
+    text-align: left;
+    margin: auto;
+    top: 15%;
+  }
 
-    .form-page-title {
-        position: relative;
-        font-size: 35px;
-        color: #0d0533;
-        font-weight: bold;
-        left: 50px;
-        top: 85px;
-    }
+  .inactive,
+  .hidden {
+    display: none;
+  }
 
-    .form-page-input {
-        position: relative;
-        left: 50px;
-        top: 85px;
-        height: 75px;
-        width: calc(100% - 100px);
-        background: rgba(255,255,255,0.7);
-        border: 0px;
-        font-family: "Lato", sans-serif;
-        font-weight: bold;
-        font-size: 18px;
-        border-radius: 7px;
-        color: #0d0533;
-        padding-left: 20px;
-        padding-right: -20px;
-        letter-spacing: 1.5px;
-    }
+  .form-page-title {
+    position: relative;
+    font-size: 35px;
+    color: #0d0533;
+    font-weight: bold;
+    left: 50px;
+    top: 85px;
+  }
 
-    .form-page-input::placeholder {
-        color: lightgrey;
-    }
+  .form-page-input {
+    position: relative;
+    left: 50px;
+    top: 85px;
+    height: 75px;
+    width: calc(100% - 140px);
+    background: rgba(255, 255, 255, 0.7);
+    border: 0px;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 7px;
+    color: #0d0533;
+    padding: 5px 20px;
+    letter-spacing: 1.5px;
+  }
 
-    #soul-color-text {
-        width: calc(100% - 200px);
-        float: left;
-        color: lightgrey;
-    }
+  .form-page-input::placeholder {
+    color: lightgrey;
+  }
 
-    #soul-color {
-        width: 85px;
-        margin-left: 15px;
-        float: left;
-        padding-right: 20px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
+  #soul-color-text {
+    width: calc(100% - 240px);
+    float: left;
+    color: lightgrey;
+  }
 
-    button {
-        float: left;
-    }
+  #soul-color {
+    width: 85px;
+    margin-left: 15px;
+    float: left;
+    height: 85px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .nav-btn {
+    position: relative;
+    height: 35px;
+    width: 75px;
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    color: white;
+    background: #9ec1eb;
+    border: 0px;
+    border-radius: 5px;
+    margin-top: 30px;
+    cursor: pointer;
+  }
+
+  #back-nav {
+    float: left;
+    margin-left: calc(15% + 50px);
+  }
+
+  #next-nav {
+    float: right;
+    margin-right: calc(15% + 50px);
+  }
+
+  #back-btn {
+    position: relative;
+    float: left;
+    top: 25px;
+    left: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  #back-btn-ico {
+      height: 25px;
+  }
 </style>

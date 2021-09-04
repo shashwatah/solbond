@@ -26,7 +26,7 @@
 </script>
 
 <div id="main-container">
-  <Navbar />
+  <Navbar walletNeeded={true}/>
 
   <FormContainer />
 

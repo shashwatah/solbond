@@ -1,3 +1,11 @@
+<script>
+import { onMount } from 'svelte';
+
+  import WalletBtn from './WalletBtn.svelte';
+
+  export let walletNeeded;
+</script>
+
 <div id="navbar">
   <a href="/"
     ><p id="navbar-title">
@@ -11,9 +19,9 @@
     </p>
   </a>
 
-  <div id="wallet-container">
-    <input type="button" id="wallet-btn" value="Connect Wallet" />
-  </div>
+  {#if walletNeeded}
+    <WalletBtn />
+  {/if}
 </div>
 
 <style>
@@ -24,11 +32,6 @@
     height: 75px;
     width: 100%;
     z-index: 1;
-  }
-
-  #navbar > a > #navbar-title,
-  #navbar > #wallet-container {
-    vertical-align: middle;
   }
 
   #navbar-title {
@@ -49,32 +52,5 @@
 
   #navbar-title > #navbar-title-icon {
     vertical-align: middle;
-  }
-
-  #wallet-container {
-    position: relative;
-    float: right;
-    background: white;
-    right: 200px;
-    top: 35px;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: saturate(180%) blur(10px);
-    border-radius: 5px;
-  }
-
-  #wallet-container:hover {
-    background: rgba(255, 255, 255, 0.7);
-  }
-
-  #wallet-btn {
-    height: 50px;
-    width: 150px;
-    color: #0d0533;
-    background: none;
-    border: 0px;
-    font-family: "Lato", sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
   }
 </style>

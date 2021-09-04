@@ -5,7 +5,7 @@
   const btnClick = (type) => dispatch("main-form-btn-click", type);
 </script>
 
-<p id="title">Weddings of the future.</p>
+<p id="title">Matrimony of the future.</p>
 
 <div id="btns-container">
   <div class="btn-container" id="register-btn-container">
@@ -42,7 +42,7 @@
     position: relative;
     top: 125px;
     font-size: 75px;
-    width: 775px;
+    width: 810px;
     font-weight: bold;
     margin: auto;
     font-family: "Lato", sans-serif;

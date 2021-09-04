@@ -1,13 +1,15 @@
 <div id="navbar">
-  <p id="navbar-title">
-    <img
-      src="assets/images/solbond-logo.png"
-      type="image/png"
-      id="navbar-title-icon"
-      draggable="false"
-      alt="sobond-logo"
-    />solbond
-  </p>
+  <a href="/"
+    ><p id="navbar-title">
+      <img
+        src="assets/images/solbond-logo.png"
+        type="image/png"
+        id="navbar-title-icon"
+        draggable="false"
+        alt="sobond-logo"
+      />solbond
+    </p>
+  </a>
 
   <div id="wallet-container">
     <input type="button" id="wallet-btn" value="Connect Wallet" />
@@ -24,7 +26,7 @@
     z-index: 1;
   }
 
-  #navbar > #navbar-title,
+  #navbar > a > #navbar-title,
   #navbar > #wallet-container {
     vertical-align: middle;
   }

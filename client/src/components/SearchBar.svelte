@@ -20,7 +20,7 @@
     background-image: url("../assets/images/search.png");
     background-position: 12px 10px;
     background-repeat: no-repeat;
-    background-size: 25px;
+    background-size: 22.5px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
     color: #0d0533;

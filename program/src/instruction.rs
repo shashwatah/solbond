@@ -8,14 +8,15 @@ pub enum SolbondInstruction {
     /// Accounts expected:
     ///
     /// 0. `[signer]` The account of the person initializing the Solbond, i.e spouse1
-    /// 1. `[writable]` Solbond account that should be created prior to this instruction and owned by the initializer
-    /// 3. `[]` spouse2's account  
-    /// 4. `[]` The rent sysvar
-    /// 5. `[]` The token program
+    /// 1. `[]` spouse2's account 
+    /// 2. `[writable]` Solbond account that should be created prior to this instruction and owned by the initializer
+    /// 3. `[]` The rent sysvar
+    /// 4. `[]` The token program
     InitSolbond {  
         spouse1_name: String,
         spouse2_name: String,
-        timestamp: u32,
+        spouse1_soul_color: String,
+        timestamp: u64,
     }
 }
 
@@ -31,15 +32,18 @@ impl SolbondInstruction {
                 let (spouse2_name_slice, _rest) = rest.split_at(25);
                 let spouse2_name =  String::from(from_utf8(spouse2_name_slice).unwrap());
 
+                let (spouse1_soul_color_slice, __rest) = _rest.split_at(6);
+                let spouse1_soul_color = String::from(from_utf8(spouse1_soul_color_slice).unwrap());
 
-                let timestamp = _rest.get(..4)
+                let timestamp = __rest.get(..8)
                             .and_then(|slice| slice.try_into().ok())
-                            .map(u32::from_le_bytes)
+                            .map(u64::from_le_bytes)
                             .ok_or(InvalidInstruction)?;
                             
                 Self::InitSolbond {
                     spouse1_name,
                     spouse2_name,
+                    spouse1_soul_color,
                     timestamp
                 }   
             }
@@ -47,31 +51,6 @@ impl SolbondInstruction {
         })
     }
 }
-
-
-// impl EscrowInstruction {
-//     /// Unpacks a byte buffer into a [EscrowInstruction](enum.EscrowInstruction.html).
-//     pub fn unpack(input: &[u8]) -> Result<Self, ProgramError> {
-//         let (tag, rest) = input.split_first().ok_or(InvalidInstruction)?;
-
-//         Ok(match tag {
-//             0 => Self::InitEscrow {
-//                 amount: Self::unpack_amount(rest)?,
-//             },
-//             _ => return Err(InvalidInstruction.into()),
-//         })
-//     }
-
-//     fn unpack_amount(input: &[u8]) -> Result<u64, ProgramError> {
-//         let amount = input
-//             .get(..8)
-//             .and_then(|slice| slice.try_into().ok())
-//             .map(u64::from_le_bytes)
-//             .ok_or(InvalidInstruction)?;
-//         Ok(amount)
-//     }
-// }
-
 
 // const BN = require('bn.js');
 

@@ -3,7 +3,6 @@ use solana_program::{
     entrypoint::ProgramResult,
     msg,
     program_error::ProgramError,
-    pubkey::Pubkey,
     program_pack::{Pack, IsInitialized},
     sysvar::{rent::Rent, Sysvar}
 };
@@ -14,7 +13,6 @@ pub struct Processor;
 
 impl Processor {
     pub fn process(
-        program_id: &Pubkey,
         accounts: &[AccountInfo],
         instruction_data: &[u8],
     ) -> ProgramResult {
@@ -24,6 +22,7 @@ impl Processor {
             SolbondInstruction::InitSolbond {
                 spouse1_name,
                 spouse2_name,
+                spouse1_soul_color,
                 timestamp,
             } => {
                 msg!("Instruction: InitSolbond");
@@ -31,8 +30,8 @@ impl Processor {
                     accounts,
                     spouse1_name,
                     spouse2_name,
-                    timestamp,
-                    program_id,
+                    spouse1_soul_color,
+                    timestamp
                 )
             }
         }
@@ -42,8 +41,8 @@ impl Processor {
         accounts: &[AccountInfo],
         spouse1_name: String,
         spouse2_name: String,
-        timestamp: u32,
-        program_id: &Pubkey,
+        spouse1_soul_color: String,
+        timestamp: u64
     ) -> ProgramResult {
         let account_info_iter = &mut accounts.iter();
         let spouse1_account = next_account_info(account_info_iter)?;
@@ -73,13 +72,10 @@ impl Processor {
         solbond_info.spouse2_pubkey = *spouse2_account.key;
         solbond_info.spouse1_name = spouse1_name;
         solbond_info.spouse2_name = spouse2_name;
+        solbond_info.spouse1_soul_color = spouse1_soul_color;
         solbond_info.timestamp = timestamp;
 
         Solbond::pack(solbond_info, &mut solbond_account.data.borrow_mut())?;
-
-        // below is the code for creating PDA to transfer ownership to, might not need it but keeping it anyway
-        // might have to change the seed later on
-        // let (pda, _bump_seed) = Pubkey::find_program_address(&[b"solbond"], program_id);
 
         Ok(())
     }

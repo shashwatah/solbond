@@ -14,7 +14,9 @@ pub struct Solbond {
     pub spouse2_pubkey: Pubkey,
     pub spouse1_name: String,
     pub spouse2_name: String, 
-    pub timestamp: u32
+    pub spouse1_soul_color: String,
+    pub spouse2_soul_color: String,
+    pub timestamp: u64
 }
 
 impl Sealed for Solbond {}
@@ -26,7 +28,7 @@ impl IsInitialized for Solbond {
 }
 
 impl Pack for Solbond {
-    const LEN: usize = 121;
+    const LEN: usize = 137;
     fn unpack_from_slice(src: &[u8]) -> Result<Self, ProgramError> {
         let src = array_ref![src, 0, Solbond::LEN];
         let (
@@ -37,8 +39,10 @@ impl Pack for Solbond {
             spouse2_pubkey,
             spouse1_name,
             spouse2_name,
+            spouse1_soul_color,
+            spouse2_soul_color,
             timestamp
-        ) = array_refs![src, 1, 1, 1, 32, 32, 25, 25, 4];
+        ) = array_refs![src, 1, 1, 1, 32, 32, 25, 25, 6, 6, 8];
 
         let is_initialized = match is_initialized {
             [0] => false,
@@ -66,9 +70,11 @@ impl Pack for Solbond {
             spouse2_pubkey: Pubkey::new_from_array(*spouse2_pubkey),
             spouse1_name: String::from(from_utf8(spouse1_name).unwrap()),
             spouse2_name: String::from(from_utf8(spouse2_name).unwrap()),
-            timestamp: timestamp.get(..4)
+            spouse1_soul_color: String::from(from_utf8(spouse1_soul_color).unwrap()),
+            spouse2_soul_color: String::from(from_utf8(spouse2_soul_color).unwrap()),
+            timestamp: timestamp.get(..8)
                                 .and_then(|slice| slice.try_into().ok())
-                                .map(u32::from_le_bytes)
+                                .map(u64::from_le_bytes)
                                 .ok_or(ProgramError::InvalidInstructionData)?
         })
     }
@@ -84,8 +90,10 @@ impl Pack for Solbond {
             spouse2_pubkey_dst,
             spouse1_name_dst,
             spouse2_name_dst,
+            spouse1_soul_color_dst,
+            spouse2_soul_color_dst,
             timestamp_dst
-        ) = mut_array_refs![dst, 1, 1, 1, 32, 32, 25, 25, 4];
+        ) = mut_array_refs![dst, 1, 1, 1, 32, 32, 25, 25, 6, 6, 8];
 
         let Solbond {
             is_initialized,
@@ -95,6 +103,8 @@ impl Pack for Solbond {
             spouse2_pubkey,
             spouse1_name,
             spouse2_name,
+            spouse1_soul_color,
+            spouse2_soul_color,
             timestamp
         } = self;
 
@@ -115,7 +125,15 @@ impl Pack for Solbond {
         *spouse2_name_dst = spouse2_name_bytes;
         // and above this comment
 
-        *timestamp_dst = timestamp.to_le_bytes();
+        let mut spouse1_soul_color_bytes: [u8; 6] = [0; 6];
+        let mut spouse2_soul_color_bytes: [u8; 6] = [0; 6];
 
+        spouse1_soul_color_bytes[..spouse1_soul_color.len()].copy_from_slice(spouse1_soul_color.as_bytes());
+        spouse2_soul_color_bytes[..spouse2_soul_color.len()].copy_from_slice(spouse2_soul_color.as_bytes());
+
+        *spouse1_soul_color_dst = spouse1_soul_color_bytes;
+        *spouse2_soul_color_dst = spouse2_soul_color_bytes;
+
+        *timestamp_dst = timestamp.to_le_bytes();
     }
 }

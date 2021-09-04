@@ -1,5 +1,50 @@
+<script>
+    import { Connection, SystemProgram, Transaction, clusterApiUrl } from '@solana/web3.js';
+    import Wallet from '@project-serum/sol-wallet-adapter';
+
+    let connection = new Connection(clusterApiUrl('devnet'));
+    let providerUrl = 'https://www.sollet.io';
+    
+    let wallet; 
+    let walletConnected = false;
+    let walletBtnValue = "Connect Wallet"
+
+    const WalletController = async () => {    
+        if(walletConnected === false) {
+            initWallet();
+            await wallet.connect();
+        } else {
+            await wallet.disconnect();
+        }
+    }
+
+    const initWallet = () => {
+        wallet = new Wallet(providerUrl);
+
+        wallet.on('connect', handleWalletConnect);
+        
+        wallet.on('disconnect', handleWalletDisconnect);
+    }
+
+    const handleWalletConnect = async (pubKey) => {
+        if(walletConnected === false) {
+            walletConnected = true;
+            let pubKeyString = await pubKey.toBase58();
+            walletBtnValue = pubKeyString.substring(0, 4) + '...' + pubKeyString.substring(pubKeyString.length - 4);
+            console.log(`Wallet Connected, PubKey: ${pubKeyString}`);
+        }
+    }
+
+    const handleWalletDisconnect = () => {
+        walletConnected = false;
+        walletBtnValue = "Connect Wallet";
+        console.log("Wallet Disconnected");
+    }
+
+</script>
+
 <div id="wallet-container">
-  <input type="button" id="wallet-btn" value="Connect Wallet" />
+  <input type="button" id="wallet-btn" bind:value={walletBtnValue} on:click={WalletController}/>
 </div>
 
 <style>

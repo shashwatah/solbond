@@ -1,5 +1,10 @@
+<script>
+  import SearchBar from './SearchBar.svelte';
+</script>
+
 <div id="footer">
-  <div id="footer">
+    <SearchBar />
+
     <p id="footer-text">
       powered by
       <a href="https://www.solana.com"
@@ -12,7 +17,6 @@
         /></a
       >
     </p>
-  </div>
 </div>
 
 <style>

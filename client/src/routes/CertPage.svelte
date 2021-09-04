@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import Navbar from "./../components/Navbar.svelte";
+  import Certificate from './../components/Certificate.svelte';
 
   onMount(() => {
     const effect = VANTA.FOG({
@@ -31,7 +32,6 @@
 
 <div id="main-container">
   <Navbar />
-  <div>
-      
-  </div>
+  
+  <Certificate />
 </div>

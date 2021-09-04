@@ -35,7 +35,7 @@
     font-family: "Lato", sans-serif;
     color: #0d0533;
     float: right;
-    right: 200px;
+    right: 200px; 
   }
 
   #footer-logo {

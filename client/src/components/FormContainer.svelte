@@ -1,7 +1,7 @@
 <script>
-  import MainForm from "./Forms/MainForm.svelte";
-  import RegisterForm from "./Forms/RegisterForm.svelte";
-  import ValidateForm from "./Forms/ValidateForm.svelte";
+  import MainForm from "./forms/MainForm.svelte";
+  import RegisterForm from "./forms/RegisterForm.svelte";
+  import ValidateForm from "./forms/ValidateForm.svelte";
 
   let form = "main";
 

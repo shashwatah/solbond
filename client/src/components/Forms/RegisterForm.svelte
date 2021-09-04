@@ -62,6 +62,7 @@
         class="form-page-input"
         placeholder="Your Name (max length: 25)"
         maxlength="25"
+        bind:value={data.name}
       />
     </div>
     <div class="form-page inactive">
@@ -71,6 +72,7 @@
         class="form-page-input"
         placeholder="Your Spouse's Name (max length: 25)"
         maxlength="25"
+        bind:value={data.spouseName}
       />
     </div>
     <div class="form-page inactive">
@@ -80,6 +82,7 @@
         class="form-page-input"
         placeholder="Your Spouse's Address"
         maxlength="44"
+        bind:value={data.spouseAddress}
       />
     </div>
     <div class="form-page inactive">
@@ -96,6 +99,7 @@
         id="soul-color"
         class="form-page-input"
         on:input={colorChange}
+        bind:value={data.color}
       />
     </div>
 

@@ -61,6 +61,7 @@
         class="form-page-input"
         placeholder="Solbond Address"
         maxlength="44"
+        bind:value={data.solbondAddress}
       />
     </div>
     <div class="form-page inactive">
@@ -69,7 +70,6 @@
         type="text"
         class="form-page-input"
         id="soul-color-text"
-        bind:value={data.color}
         disabled
       />
       <input
@@ -77,6 +77,7 @@
         id="soul-color"
         class="form-page-input"
         on:input={colorChange}
+        bind:value={data.color}
       />
     </div>
 

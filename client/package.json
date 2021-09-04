@@ -18,6 +18,8 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@project-serum/sol-wallet-adapter": "^0.2.5",
+    "@solana/web3.js": "^1.24.1",
     "page": "^1.11.6",
     "sirv-cli": "^1.0.0"
   }

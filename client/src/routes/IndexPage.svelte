@@ -1,8 +1,10 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount, getContext } from "svelte";
   import Navbar from "./../components/Navbar.svelte";
   import Footer from "./../components/Footer.svelte";
   import FormContainer from "./../components/FormContainer.svelte";
+
+  import { wallet, walletConnected } from './../store';
 
   onMount(() => {
     VANTA.FOG({
@@ -22,11 +24,14 @@
     });
   });
 
-  //   let mainPage = true;
+  let walletConnectedInternal;
+  
+  walletConnected.subscribe(value => walletConnectedInternal = value);
+
 </script>
 
 <div id="main-container">
-  <Navbar walletNeeded={true}/>
+  <Navbar walletNeeded={true} />
 
   <FormContainer />
 

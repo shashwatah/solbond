@@ -4,7 +4,7 @@
   import Footer from "./../components/Footer.svelte";
   import FormContainer from "./../components/FormContainer.svelte";
 
-  import { wallet, walletConnected } from './../store';
+  // import { wallet, walletConnected, registerData, validateData } from './../store';
 
   onMount(() => {
     VANTA.FOG({
@@ -24,9 +24,17 @@
     });
   });
 
-  let walletConnectedInternal;
-  
-  walletConnected.subscribe(value => walletConnectedInternal = value);
+  // let walletConnectedInternal;
+  // walletConnected.subscribe(value => walletConnectedInternal = value);
+
+  // const handleFormSubmit = (e) => {
+  //   console.log("form submit", e.detail);
+  //   if(e.detail === "register") {
+  //     console.log($registerData);
+  //   } else {
+  //     console.log($validateData);
+  //   }
+  // }
 
 </script>
 
@@ -34,7 +42,8 @@
   <Navbar walletNeeded={true} />
 
   <FormContainer />
-
+  <!-- on:form-submit={handleFormSubmit} -->
+  
   <Footer />
 </div>
 

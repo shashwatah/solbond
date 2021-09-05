@@ -2,7 +2,9 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
-  const back = () => dispatch("back");
+  import { activeForm, registerData } from './../../store';
+
+  const back = () => $activeForm = "main";
 
   let data = {
     name: "",
@@ -12,39 +14,55 @@
   };
 
   let pageIndex = 0;
-  
+
   const navBtnClick = (btn) => {
     let pages = Array.from(document.getElementsByClassName("form-page"));
     let navBtns = Array.from(document.getElementsByClassName("nav-btn"));
 
-    if (btn === "next") {
-      pageIndex = pageIndex + 1 < pages.length ? pageIndex + 1 : pageIndex;
+    if (
+      btn === "next" &&
+      pageIndex === pages.length - 1 &&
+      navBtns[1].value === "Submit"
+    ) {
+      submitForm();
     } else {
-      pageIndex = pageIndex - 1 >= 0 ? pageIndex - 1 : pageIndex;
-    }
-
-    for (let i = 0; i < pages.length; i++) {
-      if (i === pageIndex) {
-        pages[i].classList.remove("inactive");
+      if (btn === "next") {
+        pageIndex = pageIndex + 1 < pages.length ? pageIndex + 1 : pageIndex;
       } else {
-        if (!pages[i].classList.contains("incative")) {
-          pages[i].classList.add("inactive");
+        pageIndex = pageIndex - 1 >= 0 ? pageIndex - 1 : pageIndex;
+      }
+
+      for (let i = 0; i < pages.length; i++) {
+        if (i === pageIndex) {
+          pages[i].classList.remove("inactive");
+        } else {
+          if (!pages[i].classList.contains("incative")) {
+            pages[i].classList.add("inactive");
+          }
         }
       }
-    }
 
-    if (pageIndex > 0 && navBtns[0].classList.contains("hidden")) {
-      navBtns[0].classList.remove("hidden");
-    } else if (pageIndex === 0 && !navBtns[0].classList.contains("hidden")) {
-      navBtns[0].classList.add("hidden");
-    }
+      if (pageIndex > 0 && navBtns[0].classList.contains("hidden")) {
+        navBtns[0].classList.remove("hidden");
+      } else if (pageIndex === 0 && !navBtns[0].classList.contains("hidden")) {
+        navBtns[0].classList.add("hidden");
+      }
 
-    if (pageIndex === pages.length - 1 && navBtns[1].value === "Next") {
-      navBtns[1].value = "Submit";
-    } else if (pageIndex < pages.length - 1 && navBtns[1].value === "Submit") {
-      navBtns[1].value = "Next";
+      if (pageIndex === pages.length - 1 && navBtns[1].value === "Next") {
+        navBtns[1].value = "Submit";
+      } else if (
+        pageIndex < pages.length - 1 &&
+        navBtns[1].value === "Submit"
+      ) {
+        navBtns[1].value = "Next";
+      }
     }
   };
+
+  const submitForm = () => {
+    $registerData = data;
+    dispatch("register-form-submit");
+  }
 
   const colorChange = () => {
     data.color = document.getElementById("soul-color").value;
@@ -54,7 +72,14 @@
 
 <div id="form-container">
   <div id="form">
-    <button id="back-btn" on:click={back}><img id="back-btn-ico" src="assets/images/back.png" type="image/png" alt="back-btn"/></button>
+    <button id="back-btn" on:click={back}
+      ><img
+        id="back-btn-ico"
+        src="assets/images/back.png"
+        type="image/png"
+        alt="back-btn"
+      /></button
+    >
     <div class="form-page">
       <p class="form-page-title">Enter your name</p>
       <input
@@ -226,7 +251,7 @@
     float: right;
     margin-right: calc(15% + 50px);
   }
-  
+
   #back-btn {
     position: relative;
     float: left;
@@ -238,6 +263,6 @@
   }
 
   #back-btn-ico {
-      height: 25px;
+    height: 25px;
   }
 </style>

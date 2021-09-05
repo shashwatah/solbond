@@ -1,8 +1,13 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
+  import { activeForm, walletConnected } from './../../store.js'
 
-  const btnClick = (type) => dispatch("main-form-btn-click", type);
+  const btnClick = (type) => {
+    if($walletConnected) {
+      $activeForm = type;
+    } else {
+      alert("Connect your wallet to perform this action");
+    }
+  };
 </script>
 
 <p id="title">Matrimony of the future.</p>

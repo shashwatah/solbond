@@ -1,9 +1,7 @@
 <script>
-  import { createEventDispatcher } from "svelte";
+  import { activeForm } from  './../../store.js';
 
-  const dispatch = createEventDispatcher();
-
-  const back = () => dispatch("back");
+  const back = () => $activeForm = "main";
 
   let data = {
     solbondAddress: "",

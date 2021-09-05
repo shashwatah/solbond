@@ -1,6 +1,4 @@
 <script>
-import { onMount } from 'svelte';
-
   import WalletBtn from './WalletBtn.svelte';
 
   export let walletNeeded;

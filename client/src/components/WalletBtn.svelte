@@ -1,10 +1,8 @@
 <script>
-    import { Connection, clusterApiUrl } from '@solana/web3.js';
     import Wallet from '@project-serum/sol-wallet-adapter';
 
-    import { wallet, walletConnected } from './../store.js';
+    import { wallet, walletConnected, activeForm } from './../store.js';
 
-    let connection = new Connection(clusterApiUrl('devnet'));
     let providerUrl = 'https://www.sollet.io';
     
     let walletBtnValue = "Connect Wallet"
@@ -20,7 +18,7 @@
 
     const initWallet = () => {
         $wallet = new Wallet(providerUrl);
-        
+
         $wallet.on('connect', handleWalletConnect);
         
         $wallet.on('disconnect', handleWalletDisconnect);
@@ -38,6 +36,7 @@
     const handleWalletDisconnect = () => {
         if($walletConnected === true) {
             $walletConnected = false;
+            $activeForm = "main";
             walletBtnValue = "Connect Wallet";
             console.log("Wallet Disconnected");
         }

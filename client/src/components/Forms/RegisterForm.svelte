@@ -9,7 +9,7 @@
   let data = {
     name: "",
     spouseName: "",
-    spouseAddress: "",
+    spousePubkey: "",
     color: "Choose a color",
   };
 
@@ -105,9 +105,9 @@
       <input
         type="text"
         class="form-page-input"
-        placeholder="Your Spouse's Address"
+        placeholder="Your Spouse's Public Key"
         maxlength="44"
-        bind:value={data.spouseAddress}
+        bind:value={data.spousePubkey}
       />
     </div>
     <div class="form-page inactive">

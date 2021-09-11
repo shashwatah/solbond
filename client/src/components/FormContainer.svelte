@@ -3,18 +3,21 @@
   import RegisterForm from "./forms/RegisterForm.svelte";
   import ValidateForm from "./forms/ValidateForm.svelte";
 
-  import { activeForm, registerData, validateData } from './../store.js';
+  import { activeForm, wallet, registerData, validateData } from './../store.js';
 
-  const handleFormSubmit = (type) => {
+  import { initSolbond } from './../utils/registerTransaction.js';
+
+  const handleFormSubmit = async (type) => {
+    let solbondProgramIDString = "437pvxJrLfiZefAR3skQGrPZe7nXzPrJ4SMMnmhfkSav";
     console.log("Event: Form Submit");
     if(type === "register") {
-      console.log($registerData);
+      let result = await initSolbond($registerData.name, $registerData.spouseName, $registerData.spousePubkey, $registerData.color, Date.now(), solbondProgramIDString);
+      console.log(result);
     } else {
       console.log($validateData);
     }
     $activeForm="main";
   };
-
 </script>
 
 <div id="form-container">

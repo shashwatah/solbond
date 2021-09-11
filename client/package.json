@@ -21,6 +21,9 @@
   "dependencies": {
     "@project-serum/sol-wallet-adapter": "^0.2.5",
     "@solana/web3.js": "^1.24.1",
+    "bn.js": "^5.2.0",
+    "bops": "^1.0.1",
+    "buffer-layout": "^1.2.2",
     "page": "^1.11.6",
     "sirv-cli": "^1.0.0"
   }

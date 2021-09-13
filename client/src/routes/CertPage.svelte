@@ -31,7 +31,7 @@
 </script>
 
 <div id="main-container">
-  <Navbar walletNeeded={false}/>
+  <Navbar navbarBtnsNeeded={false}/>
   
   <Certificate />
 </div>

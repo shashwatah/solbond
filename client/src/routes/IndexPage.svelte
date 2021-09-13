@@ -39,7 +39,7 @@
 </script>
 
 <div id="main-container">
-  <Navbar walletNeeded={true} />
+  <Navbar navbarBtnsNeeded={true} />
 
   <FormContainer />
   <!-- on:form-submit={handleFormSubmit} -->

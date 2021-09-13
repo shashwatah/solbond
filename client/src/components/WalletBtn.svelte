@@ -48,25 +48,22 @@
 </div>
 
 <style>
-    #wallet-container {
+  #wallet-container {
     position: relative;
-    float: right;
-    background: white;
-    right: 200px;
-    top: 35px;
-    background: rgba(255, 255, 255, 0.5);
+    /* background: rgba(13, 5, 51, 0.8); */
+    background: #0d0533;
     backdrop-filter: saturate(180%) blur(10px);
     border-radius: 5px;
   }
 
-  #wallet-container:hover {
-    background: rgba(255, 255, 255, 0.7);
-  }
+  /* #wallet-container:hover {
+    background: #0d0533;
+  } */
 
   #wallet-btn {
     height: 50px;
     width: 150px;
-    color: #0d0533;
+    color: white;
     background: none;
     border: 0px;
     font-family: "Lato", sans-serif;

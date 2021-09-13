@@ -1,7 +1,8 @@
 <script>
+  import SearchBar from './SearchBar.svelte';
   import WalletBtn from './WalletBtn.svelte';
 
-  export let walletNeeded;
+  export let navbarBtnsNeeded;
 </script>
 
 <div id="navbar">
@@ -17,8 +18,11 @@
     </p>
   </a>
 
-  {#if walletNeeded}
-    <WalletBtn />
+  {#if navbarBtnsNeeded}
+    <div id="navbar-btns-container">
+      <SearchBar />
+      <WalletBtn />
+    </div>
   {/if}
 </div>
 
@@ -50,5 +54,16 @@
 
   #navbar-title > #navbar-title-icon {
     vertical-align: middle;
+  }
+  
+  #navbar-btns-container {
+    position: relative;
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    float: right;
+    right: 200px;
+    top: 35px;
   }
 </style>

@@ -38,6 +38,6 @@
     margin: auto;
     position: relative;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 65px;
   }
 </style>

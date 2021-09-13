@@ -43,22 +43,21 @@
     }
 </script>
 
-<div id="wallet-container">
+<div id="wallet-container" class="disconnected">
   <input type="button" id="wallet-btn" bind:value={walletBtnValue} on:click={WalletController}/>
 </div>
 
 <style>
   #wallet-container {
     position: relative;
-    /* background: rgba(13, 5, 51, 0.8); */
-    background: #0d0533;
     backdrop-filter: saturate(180%) blur(10px);
+    background: #0d0533;
     border-radius: 5px;
   }
 
-  /* #wallet-container:hover {
-    background: #0d0533;
-  } */
+  #wallet-container:hover {
+    background: rgba(13, 5, 51, 0.8);
+  }
 
   #wallet-btn {
     height: 50px;

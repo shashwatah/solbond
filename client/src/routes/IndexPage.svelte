@@ -1,10 +1,8 @@
 <script>
-  import { onMount, getContext } from "svelte";
+  import { onMount } from "svelte";
   import Navbar from "./../components/Navbar.svelte";
-  import Footer from "./../components/Footer.svelte";
   import FormContainer from "./../components/FormContainer.svelte";
-
-  // import { wallet, walletConnected, registerData, validateData } from './../store';
+  import Footer from "./../components/Footer.svelte";
 
   onMount(() => {
     VANTA.FOG({
@@ -23,26 +21,12 @@
       zoom: 1.4,
     });
   });
-
-  // let walletConnectedInternal;
-  // walletConnected.subscribe(value => walletConnectedInternal = value);
-
-  // const handleFormSubmit = (e) => {
-  //   console.log("form submit", e.detail);
-  //   if(e.detail === "register") {
-  //     console.log($registerData);
-  //   } else {
-  //     console.log($validateData);
-  //   }
-  // }
-
 </script>
 
 <div id="main-container">
-  <Navbar navbarBtnsNeeded={true} />
+  <Navbar navbarActionsNeeded={true} />
 
   <FormContainer />
-  <!-- on:form-submit={handleFormSubmit} -->
   
   <Footer />
 </div>

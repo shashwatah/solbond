@@ -31,7 +31,7 @@
 </script>
 
 <div id="main-container">
-  <Navbar navbarBtnsNeeded={false}/>
+  <Navbar navbarActionsNeeded={false}/>
   
   <Certificate />
 </div>

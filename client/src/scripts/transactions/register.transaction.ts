@@ -9,32 +9,24 @@ import {
 } from "@solana/web3.js";
 
 import BN from "bn.js";
-import { SOLBOND_ACCOUNT_DATA_LAYOUT, SolbondLayout} from "./layout";
+import { SOLBOND_ACCOUNT_DATA_LAYOUT, SolbondLayout} from "../utils/layout";
 
 import binary from 'bops';
 
 import { get } from 'svelte/store';
-import { wallet } from '../store';
+import { wallet, registerData } from '../../store';
 
 const connection = new Connection("http://localhost:8899", "singleGossip");
 
-export const initSolbond = async (
-  spouse1Name,
-  spouse2Name,
-  spouse2KeyString,
-  spouse1SoulColor,
-  timestamp,
-  solbondProgramIDString
-) => { 
+export const registerSolbond = async () => { 
 	const walletInstance: any = get(wallet);
+	const registerDataInstance: any = get(registerData)
 
-	const spouse2Key = new PublicKey(spouse2KeyString);
-	const solbondProgramID = new PublicKey(solbondProgramIDString)
+	const spouse2Key = new PublicKey(registerDataInstance.spouse2KeyString);
+	const solbondProgramID = new PublicKey("437pvxJrLfiZefAR3skQGrPZe7nXzPrJ4SMMnmhfkSav");
 
 	let solbondAccount = new Keypair();
 	console.log(solbondAccount.publicKey.toString());
-
-	// console.log(spouse2Key, spouse2Key.publicKey, solbondAccount, solbondAccount.publicKey, get(wallet).public);
 
 	console.log(walletInstance, solbondAccount)
 
@@ -49,16 +41,16 @@ export const initSolbond = async (
 	console.log(createSolbondAccount, SOLBOND_ACCOUNT_DATA_LAYOUT.span);
 	console.log(await connection.getMinimumBalanceForRentExemption(SOLBOND_ACCOUNT_DATA_LAYOUT.span, 'singleGossip'));
 
-	let spouse1Name_utf8 = [...binary.from(spouse1Name)];
+	let spouse1Name_utf8 = [...binary.from(registerDataInstance.spouse1Name)];
 	let spouse1NameBN = new BN(spouse1Name_utf8.reverse()).toArray("le", 25);
 
-	let spouse2Name_utf8 = [...binary.from(spouse2Name)];
+	let spouse2Name_utf8 = [...binary.from(registerDataInstance.spouse2Name)];
 	let spouse2NameBN = new BN(spouse2Name_utf8.reverse()).toArray("le", 25);
 
-	let spouse1SoulColor_utf8 = [...binary.from(spouse1SoulColor.substring(1))];
+	let spouse1SoulColor_utf8 = [...binary.from(registerDataInstance.spouse1SoulColor.substring(1))];
 	let spouse1SoulColorBN = new BN(spouse1SoulColor_utf8.reverse()).toArray("le", 6);
 
-	let timestampBN = new BN(timestamp).toArray("le", 8);
+	let timestampBN = new BN(Date.now()).toArray("le", 8);
 
 	const initSolbondTx = new TransactionInstruction({
 		programId: solbondProgramID,
@@ -86,10 +78,6 @@ export const initSolbond = async (
 	await tx.sign([solbondAccount]);
 
 	let signed = await walletInstance.signTransaction(tx);
-
-
-	// let signed2 = await signed.sign([solbondAccount]);
-	// console.log(signed2)
 
 	let txid = await connection.sendRawTransaction(signed.serialize());
 	

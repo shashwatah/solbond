@@ -5,13 +5,12 @@
 
   import { activeForm, registerData, validateData } from './../store.js';
 
-  import { initSolbond } from './../utils/registerTransaction.js';
+  import { registerSolbond } from '../scripts/transactions/register.transaction.js';
 
   const handleFormSubmit = async (type) => {
-    let solbondProgramIDString = "437pvxJrLfiZefAR3skQGrPZe7nXzPrJ4SMMnmhfkSav";
     console.log("Event: Form Submit");
     if(type === "register") {
-      let result = await initSolbond($registerData.name, $registerData.spouseName, $registerData.spousePubkey, $registerData.color, Date.now(), solbondProgramIDString);
+      let result = await registerSolbond();
       console.log(result);
     } else {
       console.log($validateData);

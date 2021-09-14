@@ -8,6 +8,7 @@
     height: 50px;
     width: 85px;
     background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: saturate(180%) blur(10px);
     border: 0px;
     color: #0d0533;
     background-image: url("../assets/images/search.png");

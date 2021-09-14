@@ -3,7 +3,7 @@
   import RegisterForm from "./forms/RegisterForm.svelte";
   import ValidateForm from "./forms/ValidateForm.svelte";
 
-  import { activeForm, wallet, registerData, validateData } from './../store.js';
+  import { activeForm, registerData, validateData } from './../store.js';
 
   import { initSolbond } from './../utils/registerTransaction.js';
 
@@ -39,6 +39,5 @@
     position: relative;
     text-align: center;
     margin-top: 65px;
-    transition: 1s linear;
   }
 </style>

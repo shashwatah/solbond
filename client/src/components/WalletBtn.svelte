@@ -11,6 +11,7 @@
   #connect-wallet-btn {
     position: relative;
     background: #0d0533;
+    backdrop-filter: saturate(180%) blur(10px);
     border-radius: 5px;
     height: 50px;
     width: 150px;

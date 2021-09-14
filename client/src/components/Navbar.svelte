@@ -9,8 +9,8 @@
   <a href="/"
     ><p id="navbar-title">
       <img
-        src="assets/images/solbond-logo.png"
-        type="image/png"
+        src="assets/images/solbond-logo.webp"
+        type="image/webp"
         id="navbar-title-icon"
         draggable="false"
         alt="solbond-logo"

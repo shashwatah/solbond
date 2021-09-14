@@ -11,7 +11,7 @@
     backdrop-filter: saturate(180%) blur(10px);
     border: 0px;
     color: #0d0533;
-    background-image: url("../assets/images/search.png");
+    background-image: url("../assets/images/search.webp");
     background-position: 14px 15px;
     background-repeat: no-repeat;
     background-size: 22.5px;

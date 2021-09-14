@@ -18,8 +18,8 @@
       <img
         class="btn-ico"
         id="register-btn-ico"
-        src="assets/images/register.png"
-        type="image/png"
+        src="assets/images/register.webp"
+        type="image/webp"
         draggable="false"
         alt="register-btn-ico"
       />
@@ -32,8 +32,8 @@
       <img
         class="btn-ico"
         id="validate-btn-ico"
-        src="assets/images/validate.png"
-        type="image/png"
+        src="assets/images/validate.webp"
+        type="image/webp"
         draggable="false"
         alt="register-btn-ico"
       />

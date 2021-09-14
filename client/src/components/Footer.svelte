@@ -4,8 +4,8 @@
       <a href="https://www.solana.com"
         ><img
           id="footer-logo"
-          src="assets/images/solana-logo.png"
-          type="image/png"
+          src="assets/images/solana-logo.webp"
+          type="image/webp"
           draggable="false"
           alt="solana-logo"
         /></a

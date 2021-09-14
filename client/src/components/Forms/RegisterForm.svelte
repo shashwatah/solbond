@@ -45,8 +45,8 @@
     <button id="back-btn" on:click={back}
       ><img
         id="back-btn-ico"
-        src="assets/images/back.png"
-        type="image/png"
+        src="assets/images/back.webp"
+        type="image/webp"
         alt="back-btn"
       /></button
     >

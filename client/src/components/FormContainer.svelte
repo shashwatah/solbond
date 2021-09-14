@@ -39,5 +39,6 @@
     position: relative;
     text-align: center;
     margin-top: 65px;
+    transition: 1s linear;
   }
 </style>

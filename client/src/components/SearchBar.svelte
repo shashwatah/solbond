@@ -1,8 +1,5 @@
-<script>
-</script>
-
 <form method="GET" action="/cert">
-  <input id="search-bar" type="text" name="search" placeholder="Search.." />
+  <input class="navbar-action" id="search-bar" type="text" name="search" placeholder="Search.." />
 </form>
 
 <style>

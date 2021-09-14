@@ -2,7 +2,7 @@
   import SearchBar from './SearchBar.svelte';
   import WalletBtn from './WalletBtn.svelte';
 
-  export let navbarBtnsNeeded;
+  export let navbarActionsNeeded;
 </script>
 
 <div id="navbar">
@@ -13,13 +13,13 @@
         type="image/png"
         id="navbar-title-icon"
         draggable="false"
-        alt="sobond-logo"
+        alt="solbond-logo"
       />solbond
     </p>
   </a>
 
-  {#if navbarBtnsNeeded}
-    <div id="navbar-btns-container">
+  {#if navbarActionsNeeded}
+    <div id="navbar-actions-container">
       <SearchBar />
       <WalletBtn />
     </div>
@@ -29,20 +29,19 @@
 <style>
   #navbar {
     position: relative;
-    top: 0px;
-    left: 0px;
+    top: 25px;
     height: 75px;
-    width: 100%;
+    width: calc(100% - 400px);
+    margin: auto;
     z-index: 1;
   }
 
   #navbar-title {
     position: relative;
     float: left;
+    top: -12px;
     color: #0d0533;
     font-size: 30px;
-    left: 200px;
-    top: 10px;
     font-family: "Lato", sans-serif;
     font-weight: bold;
   }
@@ -56,14 +55,13 @@
     vertical-align: middle;
   }
   
-  #navbar-btns-container {
+  #navbar-actions-container {
     position: relative;
     height: auto;
     width: auto;
     display: flex;
     flex-direction: row;
     float: right;
-    right: 200px;
-    top: 35px;
+    top: 12.5px;
   }
 </style>

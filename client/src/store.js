@@ -1,10 +1,14 @@
 import { readable, writable } from 'svelte/store';
 
-export const activeForm = writable("main");
+export const connection = writable({});
 
 export const wallet = writable({});
 
 export const walletConnected = writable(false);
+
+export const walletBtnValue = writable("Connect Wallet");
+
+export const activeForm = writable("main");
 
 export const registerData = writable({});
 

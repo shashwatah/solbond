@@ -47,7 +47,6 @@
     position: relative;
     top: 125px;
     font-size: 75px;
-    width: 810px;
     font-weight: bold;
     margin: auto;
     font-family: "Lato", sans-serif;
@@ -62,14 +61,12 @@
     top: 175px;
     display: flex;
     flex-direction: row;
-    /* background-color: lightskyblue; */
   }
 
   #btns-container .btn-container {
     position: relative;
     height: 100%;
     width: 350px;
-    background: white;
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: saturate(180%) blur(10px);
     border-radius: 5px;

@@ -5,7 +5,7 @@
 <style>
   #search-bar {
     position: relative;
-    height: 50px;
+    height: 48px;
     width: 85px;
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: saturate(180%) blur(10px);

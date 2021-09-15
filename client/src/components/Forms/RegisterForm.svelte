@@ -23,7 +23,6 @@
       submitForm();
     } else {
       pageIndex = navData;
-      console.log(pageIndex);
     }
   };
 

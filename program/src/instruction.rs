@@ -12,7 +12,7 @@ pub enum SolbondInstruction {
     /// 2. `[writable]` Solbond account that should be created prior to this instruction and owned by the initializer
     /// 3. `[]` The rent sysvar
     /// 4. `[]` The token program
-    InitSolbond {  
+    RegisterSolbond {  
         spouse1_name: String,
         spouse2_name: String,
         spouse1_soul_color: String,
@@ -40,7 +40,7 @@ impl SolbondInstruction {
                             .map(u64::from_le_bytes)
                             .ok_or(InvalidInstruction)?;
                             
-                Self::InitSolbond {
+                Self::RegisterSolbond {
                     spouse1_name,
                     spouse2_name,
                     spouse1_soul_color,
@@ -51,21 +51,3 @@ impl SolbondInstruction {
         })
     }
 }
-
-// const BN = require('bn.js');
-
-// var name_utf8 = [...Buffer.from('Kumar Shashwat')];
-// var name_full = new BN(name_utf8.reverse()).toArray("le", 25);
-// console.log(name_utf8, name_full);
-
-// var name2_utf8 = [...Buffer.from('Someone')];
-// var name2_full = new BN(name2_utf8.reverse()).toArray("le", 25);
-// console.log(name2_utf8, name2_full);
-
-// var ammount = new BN(1555).toArray("le", 4);
-// console.log(ammount, ...ammount);
-
-// let data = Buffer.from(Uint8Array.of(0, ...ammount, ...name_full, ...name2_full));
-
-// console.log(data, ...data);
-

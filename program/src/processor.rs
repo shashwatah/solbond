@@ -19,14 +19,14 @@ impl Processor {
         let instruction = SolbondInstruction::unpack(instruction_data)?;
 
         match instruction {
-            SolbondInstruction::InitSolbond {
+            SolbondInstruction::RegisterSolbond {
                 spouse1_name,
                 spouse2_name,
                 spouse1_soul_color,
                 timestamp,
             } => {
-                msg!("Instruction: InitSolbond");
-                Self::process_init_solbond(
+                msg!("Instruction: RegisterSolbond");
+                Self::process_register_solbond(
                     accounts,
                     spouse1_name,
                     spouse2_name,
@@ -37,7 +37,7 @@ impl Processor {
         }
     }
 
-    pub fn process_init_solbond(
+    pub fn process_register_solbond(
         accounts: &[AccountInfo],
         spouse1_name: String,
         spouse2_name: String,

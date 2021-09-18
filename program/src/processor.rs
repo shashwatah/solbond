@@ -7,7 +7,7 @@ use solana_program::{
     sysvar::{rent::Rent, Sysvar}
 };
 
-use crate::{error::SolbondError::NotRentExempt, instruction::SolbondInstruction, state::Solbond};
+use crate::{error::SolbondError::{NotRentExempt, InvalidInstruction}, instruction::SolbondInstruction, state::Solbond};
 
 pub struct Processor;
 
@@ -32,6 +32,16 @@ impl Processor {
                     spouse2_name,
                     spouse1_soul_color,
                     timestamp
+                )
+            }
+
+            SolbondInstruction::ValidateSolbond {
+                spouse2_soul_color
+            } => {
+                msg!("Instruction: ValidateSolbond");
+                Self::process_validate_solbond(
+                    accounts,
+                    spouse2_soul_color
                 )
             }
         }
@@ -76,6 +86,34 @@ impl Processor {
         solbond_info.timestamp = timestamp;
 
         Solbond::pack(solbond_info, &mut solbond_account.data.borrow_mut())?;
+
+        Ok(())
+    }
+
+    pub fn process_validate_solbond(accounts: &[AccountInfo], spouse2_soul_color: String) -> ProgramResult {
+        let account_info_iter = &mut accounts.iter();
+        let spouse2_account = next_account_info(account_info_iter)?;
+
+        if !spouse2_account.is_signer {
+            return Err(ProgramError::MissingRequiredSignature);
+        }
+
+        let solbond_account = next_account_info(account_info_iter)?;
+
+        let mut solbond_account_info = Solbond::unpack_unchecked(&solbond_account.data.borrow())?;
+
+        if solbond_account_info.spouse2_pubkey != *spouse2_account.key {
+            return Err(ProgramError::InvalidAccountData);
+        }
+
+        if solbond_account_info.validity2 == true {
+            return Err(InvalidInstruction.into());
+        }
+
+        solbond_account_info.validity2 = true;
+        solbond_account_info.spouse2_soul_color = spouse2_soul_color;
+
+        Solbond::pack(solbond_account_info, &mut solbond_account.data.borrow_mut())?;
 
         Ok(())
     }

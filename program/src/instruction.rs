@@ -11,12 +11,17 @@ pub enum SolbondInstruction {
     /// 1. `[]` spouse2's account 
     /// 2. `[writable]` Solbond account that should be created prior to this instruction and owned by the initializer
     /// 3. `[]` The rent sysvar
-    /// 4. `[]` The token program
     RegisterSolbond {  
         spouse1_name: String,
         spouse2_name: String,
         spouse1_soul_color: String,
         timestamp: u64,
+    },
+
+    /// 0. `[signer]` The account of the person validating the Solbond, i.e. spouse2 
+    /// 1. `[writable]` Solbond account 
+    ValidateSolbond {
+        spouse2_soul_color: String
     }
 }
 
@@ -46,6 +51,17 @@ impl SolbondInstruction {
                     spouse1_soul_color,
                     timestamp
                 }   
+            }
+            1 => {
+                if rest.len() != 6 {
+                    return Err(InvalidInstruction.into());
+                }
+
+                let spouse2_soul_color = String::from(from_utf8(rest).unwrap());
+
+                Self::ValidateSolbond {
+                    spouse2_soul_color
+                }
             }
             _ => return Err(InvalidInstruction.into()),
         })

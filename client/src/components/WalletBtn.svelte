@@ -5,7 +5,10 @@
     const walletBtnController = async () => await toggleWallet();
 </script>
 
-<input type="button" id="connect-wallet-btn" bind:value={$walletBtnValue} on:click={walletBtnController}/>
+<button id="connect-wallet-btn" on:click={walletBtnController}>
+  <img src="assets/images/wallet.webp" type="image/webp" id="connect-wallet-btn-ico" draggable="false" alt="wallet"/>
+  <span>{$walletBtnValue}</span>
+</button>
 
 <style>
   #connect-wallet-btn {
@@ -25,5 +28,16 @@
 
   #connect-wallet-btn:hover {
     background: rgba(13, 5, 51, 0.8);
+  }
+
+  #connect-wallet-btn > img,
+  #connect-wallet-btn > span {
+    vertical-align: middle;
+  }
+
+  #connect-wallet-btn-ico {
+    position: relative;
+    height: 20px;
+    margin-right: 7px;
   }
 </style>

@@ -55,22 +55,26 @@ impl Processor {
         timestamp: u64
     ) -> ProgramResult {
         let account_info_iter = &mut accounts.iter();
+        
         let spouse1_account = next_account_info(account_info_iter)?;
+        let spouse2_account = next_account_info(account_info_iter)?;
+        let solbond_account = next_account_info(account_info_iter)?;
+        let rent = &Rent::from_account_info(next_account_info(account_info_iter)?)?;
 
+        let mut solbond_info = Solbond::unpack_unchecked(&solbond_account.data.borrow())?;
+        
         if !spouse1_account.is_signer {
             return Err(ProgramError::MissingRequiredSignature);
         }
 
-        let spouse2_account = next_account_info(account_info_iter)?;
-        let solbond_account = next_account_info(account_info_iter)?;
+        if spouse1_account.key == spouse2_account.key {
+            return Err(ProgramError::InvalidAccountData);
+        }
         
-        let rent = &Rent::from_account_info(next_account_info(account_info_iter)?)?;
-
         if !rent.is_exempt(solbond_account.lamports(), solbond_account.data_len()) {
             return Err(NotRentExempt.into());
         }
 
-        let mut solbond_info = Solbond::unpack_unchecked(&solbond_account.data.borrow())?;
         if solbond_info.is_initialized() {
             return Err(ProgramError::AccountAlreadyInitialized);
         }
@@ -92,15 +96,15 @@ impl Processor {
 
     pub fn process_validate_solbond(accounts: &[AccountInfo], spouse2_soul_color: String) -> ProgramResult {
         let account_info_iter = &mut accounts.iter();
+
         let spouse2_account = next_account_info(account_info_iter)?;
+        let solbond_account = next_account_info(account_info_iter)?;
+        
+        let mut solbond_account_info = Solbond::unpack_unchecked(&solbond_account.data.borrow())?;
 
         if !spouse2_account.is_signer {
             return Err(ProgramError::MissingRequiredSignature);
         }
-
-        let solbond_account = next_account_info(account_info_iter)?;
-
-        let mut solbond_account_info = Solbond::unpack_unchecked(&solbond_account.data.borrow())?;
 
         if solbond_account_info.spouse2_pubkey != *spouse2_account.key {
             return Err(ProgramError::InvalidAccountData);

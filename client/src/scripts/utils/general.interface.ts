@@ -8,3 +8,8 @@ export interface RegisterData extends GenericData {
   spousePubkey: string;
   color: string;
 }
+
+export interface ValidateData extends GenericData {
+  solbondAccountPubkey: string;
+  color: string;
+}

@@ -90,7 +90,8 @@ export const registerSolbond = async () => {
 
     return {
       transactionSig,
-      isInitialized: !!decodedSolbondState.isInitialized,
+      isInitialized: decodedSolbondState.isInitialized,
+      solbondAccount: solbondAccount.publicKey.toBase58()
     };
   } else {
     return "Encountered an error while sending transaction";
@@ -132,9 +133,9 @@ const registerSolbondInstruction = (
   const spouse2NameBN = new BN(spouse2Name_utf8.reverse()).toArray("le", 25);
 
   const spouse1SoulColor_utf8 = [
-    ...binary.from(registerData.color.substring(1)),
+    ...binary.from(registerData.color.substring(1))
   ];
-  let spouse1SoulColorBN = new BN(spouse1SoulColor_utf8.reverse()).toArray(
+  const spouse1SoulColorBN = new BN(spouse1SoulColor_utf8.reverse()).toArray(
     "le",
     6
   );

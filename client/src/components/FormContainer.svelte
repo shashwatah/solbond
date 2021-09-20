@@ -6,6 +6,7 @@
   import { activeForm, registerData, validateData } from './../store.js';
 
   import { registerSolbond } from '../scripts/transactions/register.transaction.js';
+  import { validateSolbond } from '../scripts/transactions/validate.transaction.js';
 
   const handleFormSubmit = async (type) => {
     console.log("Event: Form Submit");
@@ -13,7 +14,8 @@
       let result = await registerSolbond();
       console.log(result);
     } else {
-      console.log($validateData);
+      let result = await validateSolbond();
+      console.log(result);
     }
     $activeForm="main";
   };
@@ -25,7 +27,7 @@
   {:else if $activeForm === "register"}
     <RegisterForm on:register-form-submit={() => {handleFormSubmit("register")}}/>
   {:else}
-    <ValidateForm />
+    <ValidateForm on:validate-form-submit={() => {handleFormSubmit("validate")}}/>
   {/if}
 </div>
 

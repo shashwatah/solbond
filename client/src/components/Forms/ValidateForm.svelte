@@ -1,10 +1,13 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
+  
   import { navController } from './utils/nav.controller';
 
-  import { activeForm } from  './../../store.js';
+  import { activeForm, validateData } from  './../../store.js';
   
   let data = {
-    solbondAddress: "",
+    solbondAccountPubkey: "",
     color: "Choose a color",
   };
   
@@ -27,7 +30,8 @@
   };
 
   const submitForm = () => {
-    console.log("Validate Form: Submit event");
+    $validateData = data;
+    dispatch("validate-form-submit");
   }
 
   const back = () => $activeForm = "main";
@@ -43,7 +47,7 @@
         class="form-page-input"
         placeholder="Solbond Address"
         maxlength="44"
-        bind:value={data.solbondAddress}
+        bind:value={data.solbondAccountPubkey}
       />
     </div>
     <div class="form-page inactive">

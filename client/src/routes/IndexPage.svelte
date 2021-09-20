@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import Navbar from "./../components/Navbar.svelte";
-  import FormContainer from "./../components/FormContainer.svelte";
+  import FormContainer from "./../components/FormContainer/FormContainer.svelte";
   import Footer from "./../components/Footer.svelte";
 
   onMount(() => {

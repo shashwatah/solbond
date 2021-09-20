@@ -32,7 +32,7 @@ const handleWalletConnect = async (pubKey) => {
 const handleWalletDisconnect =  () => {
     walletConnected.set(false);
     walletBtnValue.set("Connect");
-    activeForm.set("main");
+    activeForm.set("index");
 
     console.log("Wallet Disconnected");
 }   

@@ -16,6 +16,8 @@
         : await validateSolbond();
 
     console.log(`Transaction-Result`, result);
+
+    $activeForm = "index";
   };
 </script>
 

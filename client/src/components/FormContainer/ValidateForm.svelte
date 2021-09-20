@@ -7,8 +7,8 @@
   import { activeForm, validateData } from  './../../store.js';
   
   let data = {
-    solbondAccountPubkey: "",
-    color: "Choose a color",
+    solbondAccountPubkeyString: "",
+    spouse2Color: "Choose a color",
   };
   
   let pageIndex = 0;
@@ -25,8 +25,8 @@
   };
 
   const colorChange = () => {
-    data.color = document.getElementById("soul-color").value;
-    document.getElementById("soul-color-text").style.color = data.color;
+    data.spouse2Color = document.getElementById("soul-color").value;
+    document.getElementById("soul-color-text").style.color = data.spouse2Color;
   };
 
   const submitForm = () => {
@@ -47,7 +47,7 @@
         class="form-page-input"
         placeholder="Solbond Address"
         maxlength="44"
-        bind:value={data.solbondAccountPubkey}
+        bind:value={data.solbondAccountPubkeyString}
       />
     </div>
     <div class="form-page inactive">
@@ -56,7 +56,7 @@
         type="text"
         class="form-page-input"
         id="soul-color-text"
-        bind:value={data.color}
+        bind:value={data.spouse2Color}
         disabled
       />
       <input

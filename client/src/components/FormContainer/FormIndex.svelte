@@ -1,11 +1,11 @@
 <script>
-  import { activeForm, walletConnected } from './../../store.js'
+  import { activeForm, walletConnected } from "./../../store.js";
 
   const btnClick = (type) => {
-    if($walletConnected) {
+    if ($walletConnected) {
       $activeForm = type;
     } else {
-      alert("Connect your wallet to perform this action");
+      alert("Connect your wallet to perform this action.");
     }
   };
 </script>

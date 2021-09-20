@@ -19,7 +19,7 @@ import {
   SOLBOND_ACCOUNT_DATA_LAYOUT,
   SolbondLayout,
 } from "../utils/solbond.layout";
-import type { RegisterData } from "../utils/general.interface";
+import type { RegisterData } from "../utils/general.interfaces";
 
 const connection: Connection = new Connection(
   "http://localhost:8899",
@@ -124,7 +124,7 @@ const registerSolbondInstruction = (
   registerData: RegisterData,
   solbondProgramID: PublicKey
 ): TransactionInstruction => {
-  const spousePubkey: PublicKey = new PublicKey(registerData.spousePubkey);
+  const spouse2AccountPubkey: PublicKey = new PublicKey(registerData.spousePubkeyString);
 
   const spouse1Name_utf8 = [...binary.from(registerData.name)];
   const spouse1NameBN = new BN(spouse1Name_utf8.reverse()).toArray("le", 25);
@@ -133,7 +133,7 @@ const registerSolbondInstruction = (
   const spouse2NameBN = new BN(spouse2Name_utf8.reverse()).toArray("le", 25);
 
   const spouse1SoulColor_utf8 = [
-    ...binary.from(registerData.color.substring(1))
+    ...binary.from(registerData.soulColor.substring(1))
   ];
   const spouse1SoulColorBN = new BN(spouse1SoulColor_utf8.reverse()).toArray(
     "le",
@@ -147,7 +147,7 @@ const registerSolbondInstruction = (
       programId: solbondProgramID,
       keys: [
         { pubkey: walletPubkey, isSigner: true, isWritable: false },
-        { pubkey: spousePubkey, isSigner: false, isWritable: false },
+        { pubkey: spouse2AccountPubkey, isSigner: false, isWritable: false },
         { pubkey: solbondAccountPubkey, isSigner: false, isWritable: true },
         { pubkey: SYSVAR_RENT_PUBKEY, isSigner: false, isWritable: false },
       ],

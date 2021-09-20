@@ -2,16 +2,25 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
-  import { navController } from './utils/nav.controller';
+  import { navController } from "./utils/nav.controller";
 
-  import { activeForm, registerData } from './../../store';
+  import { activeForm, registerData, validateData } from "./../../store.js";
 
-  let data = {
-    name: "",
-    spouseName: "",
-    spousePubkey: "",
-    color: "Choose a color",
-  };
+  export let type;
+  let data =
+    type === "register"
+      ? {
+          name: "",
+          spouseName: "",
+          spousePubkeyString: "",
+          soulColor: "Choose a color",
+        }
+      : {
+          solbondPubkeyString: "",
+          soulColor: "Choose a color",
+        };
+
+  const back = () => ($activeForm = "index");
 
   let pageIndex = 0;
   const navBtnClick = (btn) => {
@@ -19,24 +28,18 @@
     let navBtns = Array.from(document.getElementsByClassName("nav-btn"));
 
     let navData = navController(btn, pageIndex, pages, navBtns);
-    if (navData === "submit") {
-      submitForm();
-    } else {
-      pageIndex = navData;
-    }
+    navData === "submit" ? submitForm() : (pageIndex = navData);
   };
 
   const colorChange = () => {
-    data.color = document.getElementById("soul-color").value;
-    document.getElementById("soul-color-text").style.color = data.color;
+    data.soulColor = document.getElementById("soul-color").value;
+    document.getElementById("soul-color-text").style.color = data.soulColor;
   };
 
   const submitForm = () => {
-    $registerData = data;
-    dispatch("register-form-submit");
-  }
-
-  const back = () => $activeForm = "main";
+    type === "register" ? ($registerData = data) : ($validateData = data);
+    dispatch("form-submit", type);
+  };
 </script>
 
 <div id="form-container">
@@ -49,54 +52,81 @@
         alt="back-btn"
       /></button
     >
-    <div class="form-page">
-      <p class="form-page-title">Enter your name</p>
-      <input
-        type="text"
-        class="form-page-input"
-        placeholder="Your Name (max length: 25)"
-        maxlength="25"
-        bind:value={data.name}
-      />
-    </div>
-    <div class="form-page inactive">
-      <p class="form-page-title">Enter your spouse's name</p>
-      <input
-        type="text"
-        class="form-page-input"
-        placeholder="Your Spouse's Name (max length: 25)"
-        maxlength="25"
-        bind:value={data.spouseName}
-      />
-    </div>
-    <div class="form-page inactive">
-      <p class="form-page-title">Enter your spouse's address</p>
-      <input
-        type="text"
-        class="form-page-input"
-        placeholder="Your Spouse's Public Key"
-        maxlength="44"
-        bind:value={data.spousePubkey}
-      />
-    </div>
-    <div class="form-page inactive">
-      <p class="form-page-title">Choose a color for your soul</p>
-      <input
-        type="text"
-        class="form-page-input"
-        id="soul-color-text"
-        bind:value={data.color}
-        disabled
-      />
-      <input
-        type="color"
-        id="soul-color"
-        class="form-page-input"
-        on:input={colorChange}
-        bind:value={data.color}
-      />
-    </div>
-
+    {#if type === "register"}
+      <div class="form-page">
+        <p class="form-page-title">Enter your name</p>
+        <input
+          type="text"
+          class="form-page-input"
+          placeholder="Your Name (max length: 25)"
+          maxlength="25"
+          bind:value={data.name}
+        />
+      </div>
+      <div class="form-page inactive">
+        <p class="form-page-title">Enter your spouse's name</p>
+        <input
+          type="text"
+          class="form-page-input"
+          placeholder="Your Spouse's Name (max length: 25)"
+          maxlength="25"
+          bind:value={data.spouseName}
+        />
+      </div>
+      <div class="form-page inactive">
+        <p class="form-page-title">Enter your spouse's address</p>
+        <input
+          type="text"
+          class="form-page-input"
+          placeholder="Your Spouse's Public Key"
+          maxlength="44"
+          bind:value={data.spousePubkeyString}
+        />
+      </div>
+      <div class="form-page inactive">
+        <p class="form-page-title">Choose a color for your soul</p>
+        <input
+          type="text"
+          class="form-page-input"
+          id="soul-color-text"
+          bind:value={data.soulColor}
+          disabled
+        />
+        <input
+          type="color"
+          id="soul-color"
+          class="form-page-input"
+          on:input={colorChange}
+        />
+      </div>
+    {:else}
+      <div class="form-page">
+        <p class="form-page-title">Enter Solbond address</p>
+        <input
+          type="text"
+          class="form-page-input"
+          placeholder="Solbond Address"
+          maxlength="44"
+          bind:value={data.solbondPubkeyString}
+        />
+      </div>
+      <div class="form-page inactive">
+        <p class="form-page-title">Choose a color for your soul</p>
+        <input
+          type="text"
+          class="form-page-input"
+          id="soul-color-text"
+          bind:value={data.soulColor}
+          disabled
+        />
+        <input
+          type="color"
+          id="soul-color"
+          class="form-page-input"
+          on:input={colorChange}
+        />
+      </div>
+    {/if}
     <input
       type="button"
       value="Back"

@@ -8,7 +8,7 @@ export const walletConnected = writable(false);
 
 export const walletBtnValue = writable("Connect");
 
-export const activeForm = writable("main");
+export const activeForm = writable("index");
 
 export const registerData = writable({});
 

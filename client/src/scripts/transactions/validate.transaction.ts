@@ -17,7 +17,7 @@ import {
   SOLBOND_ACCOUNT_DATA_LAYOUT,
   SolbondLayout,
 } from "../utils/solbond.layout";
-import type { ValidateData } from "../utils/general.interface";
+import type { ValidateData } from "../utils/general.interfaces";
 
 const connection: Connection = new Connection(
   "http://localhost:8899",
@@ -32,19 +32,15 @@ export const validateSolbond = async () => {
     "437pvxJrLfiZefAR3skQGrPZe7nXzPrJ4SMMnmhfkSav"
   );
 
-  console.log(validateDataRef);
-
   const solbondAccountPubkey: PublicKey = new PublicKey(
-    validateDataRef.solbondAccountPubkey
+    validateDataRef.solbondPubkeyString
   );
-
-  
 
   const instruction = validateSolbondInstruction(
     walletRef.publicKey,
     solbondAccountPubkey,
     solbondProgramID,
-    validateDataRef.color
+    validateDataRef.soulColor
   );
 
   const transaction: Transaction = new Transaction().add(instruction);
@@ -92,9 +88,9 @@ const validateSolbondInstruction = (
   walletPubkey: PublicKey,
   solbondAccountPubkey: PublicKey,
   solbondProgramID: PublicKey,
-  color: string
+  soulColor: string
 ): TransactionInstruction => {
-  const spouse2SoulColor_utf8 = [...binary.from(color.substring(1))];
+  const spouse2SoulColor_utf8 = [...binary.from(soulColor.substring(1))];
   const spouse2SoulColorBN = new BN(spouse2SoulColor_utf8.reverse()).toArray(
     "le",
     6

@@ -27,9 +27,26 @@
   <Navbar navbarActionsNeeded={true} />
 
   <FormContainer />
-  
+
   <Footer />
 </div>
 
 <style>
+  :global(.snackbar) {
+    border-radius: 5px;
+    margin-left: 200px;
+  }
+
+  :global(.snackbar p) {
+    font-family: "Lato", sans-serif !important;
+    font-weight: bold !important;
+  }
+
+  @media (max-width: 640px) {
+    :global(.snackbar) {
+      margin-left: 0px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
 </style>

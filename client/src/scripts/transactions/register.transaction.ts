@@ -78,24 +78,9 @@ export const registerSolbond = async () => {
     transactionSig
   );
 
-  if (transactionConfirmation.context.slot) {
-    const encodedSolbondState = (await connection.getAccountInfo(
-      solbondAccount.publicKey,
-      "singleGossip"
-    ))!.data;
-
-    const decodedSolbondState = SOLBOND_ACCOUNT_DATA_LAYOUT.decode(
-      encodedSolbondState
-    ) as SolbondLayout;
-
-    return {
-      transactionSig,
-      isInitialized: decodedSolbondState.isInitialized,
-      solbondAccount: solbondAccount.publicKey.toBase58()
-    };
-  } else {
-    return "Encountered an error while sending transaction";
-  }
+  if (transactionConfirmation.context.slot)
+    return solbondAccount.publicKey.toBase58();
+  else return "Encountered an error while sending transaction";
 };
 
 const createSolbondAccountInstruction = async (
@@ -124,7 +109,9 @@ const registerSolbondInstruction = (
   registerData: RegisterData,
   solbondProgramID: PublicKey
 ): TransactionInstruction => {
-  const spouse2AccountPubkey: PublicKey = new PublicKey(registerData.spousePubkeyString);
+  const spouse2AccountPubkey: PublicKey = new PublicKey(
+    registerData.spousePubkeyString
+  );
 
   const spouse1Name_utf8 = [...binary.from(registerData.name)];
   const spouse1NameBN = new BN(spouse1Name_utf8.reverse()).toArray("le", 25);
@@ -133,7 +120,7 @@ const registerSolbondInstruction = (
   const spouse2NameBN = new BN(spouse2Name_utf8.reverse()).toArray("le", 25);
 
   const spouse1SoulColor_utf8 = [
-    ...binary.from(registerData.soulColor.substring(1))
+    ...binary.from(registerData.soulColor.substring(1)),
   ];
   const spouse1SoulColorBN = new BN(spouse1SoulColor_utf8.reverse()).toArray(
     "le",

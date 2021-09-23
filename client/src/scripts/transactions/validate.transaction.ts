@@ -75,10 +75,7 @@ export const validateSolbond = async () => {
       encodedSolbondState
     ) as SolbondLayout;
 
-    return {
-      transactionSig,
-      solbondState: decodedSolbondState
-    };
+    return `Solbond Validated: ${decodedSolbondState.validity2}`;
   } else {
     return "Encountered an error while sending transaction";
   }

@@ -42,6 +42,15 @@
     font-weight: bold !important;
   }
 
+  :global(.snackbar button) {
+    font-family: "Lato", sans-serif !important;
+    font-weight: bold !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    border-radius: 4px !important;
+    padding: 5px 10px 5px 10px !important;
+    letter-spacing: 1.2px;
+  }
+
   @media (max-width: 640px) {
     :global(.snackbar) {
       margin-left: 0px;

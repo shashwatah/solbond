@@ -19,12 +19,12 @@ const typeSpecificData = {
         duration: 3000,
         showAction: false,
     },
-}
+};
 
 export const snackbarController = (type, text) => {
-    const standardConfig = { text, customClass: 'snackbar' }
+    const standardConfig = { text, customClass: 'snackbar' };
 
-    const snackbarConfig = Object.assign(standardConfig, typeSpecificData[type])
+    const snackbarConfig = Object.assign(standardConfig, typeSpecificData[type]);
 
-    Snackbar.show(snackbarConfig)
-}
+    Snackbar.show(snackbarConfig);
+};

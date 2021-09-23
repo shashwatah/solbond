@@ -1,15 +1,15 @@
 export interface GenericData {
-    [key: string]: string
+    [key: string]: string;
 }
 
 export interface RegisterData extends GenericData {
-    name: string
-    spouseName: string
-    spousePubkeyString: string
-    soulColor: string
+    name: string;
+    spouseName: string;
+    spousePubkeyString: string;
+    soulColor: string;
 }
 
 export interface ValidateData extends GenericData {
-    solbondPubkeyString: string
-    soulColor: string
+    solbondPubkeyString: string;
+    soulColor: string;
 }

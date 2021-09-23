@@ -2,8 +2,9 @@
   import FormIndex from "./FormIndex.svelte";
   import Form from "./Form.svelte";
 
-  import { registerSolbond } from "../../scripts/transactions/register.transaction.js";
-  import { validateSolbond } from "../../scripts/transactions/validate.transaction.js";
+  import { registerSolbond } from "../../scripts/transactions/register.transaction";
+  import { validateSolbond } from "../../scripts/transactions/validate.transaction";
+  import { snackbarController } from "../../scripts/controllers/snackbar.controller";
 
   import { activeForm, registerData } from "./../../store.js";
 
@@ -14,6 +15,8 @@
       data.detail === "register"
         ? await registerSolbond()
         : await validateSolbond();
+
+    snackbarController("success", result)
 
     console.log(`Transaction-Result`, result);
 

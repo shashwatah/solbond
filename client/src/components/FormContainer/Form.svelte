@@ -4,6 +4,7 @@
 
   import { navController } from "./utils/nav.controller";
   import { inputValidation } from "./utils/input.controller";
+  import { snackbarController } from "../../scripts/controllers/snackbar.controller";
 
   import { activeForm, registerData, validateData } from "./../../store.js";
 
@@ -43,7 +44,7 @@
         type === "register" ? ($registerData = data) : ($validateData = data);
         dispatch("form-submit", type);
     }else {
-        alert(validation.message);
+        snackbarController("warning", validation.message);
     }
   };
 </script>

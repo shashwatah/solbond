@@ -1,11 +1,13 @@
 <script>
-  import { activeForm, walletConnected } from "./../../store.js";
+  import { snackbarController } from "../../scripts/controllers/snackbar.controller.js";
 
+  import { activeForm, walletConnected } from "./../../store.js";
+  
   const btnClick = (type) => {
     if ($walletConnected) {
       $activeForm = type;
     } else {
-      alert("Connect your wallet to perform this action.");
+      snackbarController("warning", "Connect your wallet to perform this action");
     }
   };
 </script>

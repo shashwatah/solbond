@@ -18,6 +18,8 @@ import { wallet, registerData } from '../../store';
 import { SOLBOND_ACCOUNT_DATA_LAYOUT, SolbondLayout } from '../utils/solbond.layout';
 import type { RegisterData } from '../utils/general.interfaces';
 
+import { snackbarController } from '../controllers/snackbar.controller';
+
 const connection: Connection = new Connection('http://localhost:8899', 'singleGossip');
 
 export const registerSolbond = async () => {
@@ -56,14 +58,15 @@ export const registerSolbond = async () => {
     await transaction.sign([solbondAccount]);
     let signedTransaction: Transaction = await walletRef.signTransaction(transaction);
 
+    snackbarController("loading", "Sending Transaction...");
+
     let transactionSig = await connection.sendRawTransaction(signedTransaction.serialize());
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    const transactionConfirmation = await connection.confirmTransaction(transactionSig);
-
-    if (transactionConfirmation.context.slot) return solbondAccount.publicKey.toBase58();
-    else return 'Encountered an error while sending transaction';
+    await connection.confirmTransaction(transactionSig);
+ 
+    return `transactionSig: ${transactionSig}, solbondAddress: ${solbondAccount.publicKey.toBase58()}`;
 };
 
 const createSolbondAccountInstruction = async (

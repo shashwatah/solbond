@@ -7,15 +7,19 @@ export const validateInput = (type, data) => {
     if (type === 'register') {
         if (!validateName(data.name) || !validateName(data.spouseName))
             throw generateError('BadName')
-        if (!validatePubkey(data.spousePubkeyString)) throw generateError('BadPubkey')
+        if (!validatePubkey(data.spousePubkeyString)) 
+            throw generateError('BadPubkey')
         if (get(wallet).publicKey.toBase58() === data.spousePubkeyString)
             throw generateError('DuplicateKey')
-        if (!validateSoulColor(data.soulColor)) throw generateError('BadColor')
+        if (!validateSoulColor(data.soulColor)) 
+            throw generateError('BadColor')
     } else {
-        if (!validatePubkey(data.solbondPubkeyString)) throw generateError('BadPubkey')
+        if (!validatePubkey(data.solbondPubkeyString)) 
+            throw generateError('BadPubkey')
         if (get(wallet).publicKey.toBase58() === data.solbondPubkeyString)
             throw generateError('DuplicateKey')
-        if (!validateSoulColor(data.soulColor)) throw generateError('BadColor')
+        if (!validateSoulColor(data.soulColor)) 
+            throw generateError('BadColor')
     }
 }
 

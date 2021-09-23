@@ -6,19 +6,30 @@
   import { validateSolbond } from "../../scripts/transactions/validate.transaction";
   import { snackbarController } from "../../scripts/controllers/snackbar.controller";
 
-  import { activeForm, registerData } from "./../../store.js";
+  import { activeForm } from "./../../store.js";
+  import {
+    generateError,
+    handleError,
+  } from "../../scripts/controllers/error.controller";
 
   const handleFormSubmit = async (data) => {
     console.log(`Event: Form Submit; Form-Type: ${data.detail}`);
 
-    const result =
-      data.detail === "register"
-        ? await registerSolbond()
-        : await validateSolbond();
+    let result;
+    
+    try {
+      if (data.detail === "register") {
+        result = await registerSolbond();
+        snackbarController("success-register", "Solbond Registered! Save Solbond data", result);
+      } else {
+        result = await validateSolbond();
+        snackbarController("success", "Solbond Validated!");
+      }
+    } catch (err) {
+      handleError(generateError("TransactionError"));
+    }
 
-    snackbarController("success", result);
-
-    console.log(`Transaction-Result`, result);
+    console.log(`Transaction-Result: ${result}`);
 
     $activeForm = "index";
   };

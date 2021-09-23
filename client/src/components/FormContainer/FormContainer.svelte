@@ -16,7 +16,7 @@
         ? await registerSolbond()
         : await validateSolbond();
 
-    snackbarController("success", result)
+    snackbarController("success", result);
 
     console.log(`Transaction-Result`, result);
 

@@ -3,8 +3,9 @@
   const dispatch = createEventDispatcher();
 
   import { navController } from "./utils/nav.controller";
-  import { inputValidation } from "./utils/input.controller";
-  import { snackbarController } from "../../scripts/controllers/snackbar.controller";
+  import { validateInput } from "./utils/input.controller";
+
+  import { handleError } from "../../scripts/controllers/error.controller";
 
   import { activeForm, registerData, validateData } from "./../../store.js";
 
@@ -39,13 +40,14 @@
   };
 
   const submitForm = () => {
-    let validation = inputValidation(type, data);
-    if (validation.valid) {
-        type === "register" ? ($registerData = data) : ($validateData = data);
-        dispatch("form-submit", type);
-    }else {
-        snackbarController("warning", validation.message);
+    try {
+      validateInput(type, data);
+    } catch (err) {
+      return handleError(err);
     }
+
+    type === "register" ? ($registerData = data) : ($validateData = data);
+    dispatch("form-submit", type);
   };
 </script>
 

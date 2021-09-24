@@ -1,5 +1,7 @@
 /node_modules/
 /public/build/
 
+/src/store/env.store.js
+
 .DS_Store
 .vscode

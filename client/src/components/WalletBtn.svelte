@@ -1,6 +1,6 @@
 <script>
     import { toggleWallet } from './../scripts/controllers/wallet.controller';
-    import { walletBtnValue } from './../store';
+    import { walletBtnValue } from './../store/store';
 
     const walletBtnController = async () => await toggleWallet();
 </script>

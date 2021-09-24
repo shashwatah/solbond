@@ -6,7 +6,7 @@
   import { validateSolbond } from "../../scripts/transactions/validate.transaction";
   import { snackbarController } from "../../scripts/controllers/snackbar.controller";
 
-  import { activeForm } from "./../../store.js";
+  import { activeForm } from "./../../store/store";
   import {
     generateError,
     handleError,

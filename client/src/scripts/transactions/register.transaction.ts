@@ -13,22 +13,23 @@ import BN from 'bn.js';
 import binary from 'bops';
 
 import { get } from 'svelte/store';
-import { wallet, registerData } from '../../store';
+import { wallet, registerData } from '../../store/store';
+import { connectionConfig, programID} from '../../store/env.store';
 
 import { SOLBOND_ACCOUNT_DATA_LAYOUT, SolbondLayout } from '../utils/solbond.layout';
-import type { RegisterData } from '../utils/general.interfaces';
+import type { RegisterData, ConnectionConfig } from '../utils/general.interfaces';
 
 import { snackbarController } from '../controllers/snackbar.controller';
 
-const connection: Connection = new Connection('http://localhost:8899', 'singleGossip');
+const connectionConfigRef: ConnectionConfig = get(connectionConfig)
+const connection: Connection = new Connection(connectionConfigRef.endpoint, connectionConfigRef.commitent);
 
 export const registerSolbond = async () => {
     const walletRef: Wallet = get(wallet);
     const registerDataRef: RegisterData = get(registerData);
 
-    const solbondProgramID: PublicKey = new PublicKey(
-        '437pvxJrLfiZefAR3skQGrPZe7nXzPrJ4SMMnmhfkSav'
-    );
+    const programIDRef: string = get(programID);
+    const solbondProgramID: PublicKey = new PublicKey(programIDRef);
 
     let solbondAccount: Keypair = new Keypair();
 

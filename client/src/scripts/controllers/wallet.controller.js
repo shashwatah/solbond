@@ -1,9 +1,9 @@
 import Wallet from '@project-serum/sol-wallet-adapter';
 
-import { snackbarController } from './snackbar.controller.js';
+import { snackbarController } from './snackbar.controller';
 
 import { get } from 'svelte/store';
-import { wallet, walletConnected, activeForm, walletBtnValue } from './../../store.js';
+import { wallet, walletConnected, activeForm, walletBtnValue } from './../../store/store';
 
 export const toggleWallet = async (providerUrl = 'https://www.sollet.io') => {
     if (!get(walletConnected)) {

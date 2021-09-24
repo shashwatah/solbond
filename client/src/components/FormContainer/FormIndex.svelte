@@ -1,7 +1,7 @@
 <script>
-  import { snackbarController } from "../../scripts/controllers/snackbar.controller.js";
+  import { snackbarController } from "../../scripts/controllers/snackbar.controller";
 
-  import { activeForm, walletConnected } from "./../../store.js";
+  import { activeForm, walletConnected } from "./../../store/store";
   
   const btnClick = (type) => {
     if ($walletConnected) {

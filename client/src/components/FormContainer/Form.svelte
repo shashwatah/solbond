@@ -7,7 +7,7 @@
 
   import { handleError } from "../../scripts/controllers/error.controller";
 
-  import { activeForm, registerData, validateData } from "./../../store.js";
+  import { activeForm, registerData, validateData } from "./../../store/store";
 
   export let type;
   let data =

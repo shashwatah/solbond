@@ -12,4 +12,4 @@
   router.start();
 </script>
 
-<svelte:component this="{page}" params="{params}" />
+<svelte:component this="{page}" />

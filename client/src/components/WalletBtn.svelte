@@ -2,12 +2,15 @@
     import { toggleWallet } from './../scripts/controllers/wallet.controller';
     import { walletBtnValue } from './../store/store';
 
+    export let isSidebarBtn;
+    let extraClass = isSidebarBtn ? "sidebar-btn" : "";
+
     const walletBtnController = async () => await toggleWallet();
 </script>
 
-<button id="connect-wallet-btn" on:click={walletBtnController}>
+<button id="connect-wallet-btn" class="{extraClass}" on:click={walletBtnController}>
     <img
-        src="assets/images/wallet.webp"
+        src="assets/images/wallet{isSidebarBtn ? "_sidebar" : ""}.webp"
         type="image/webp"
         id="connect-wallet-btn-ico"
         draggable="false"
@@ -45,5 +48,18 @@
         position: relative;
         height: 20px;
         margin-right: 7px;
+    }
+
+    .sidebar-btn {
+        background: white !important;
+        color: #0d0533! important;
+        height: 75px !important;
+        width: 100% !important;
+        font-size: 20px !important;
+        margin-top: 40px !important;
+    }
+
+    .sidebar-btn #connect-wallet-btn-ico {
+        height: 25px;
     }
 </style>

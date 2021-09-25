@@ -1,8 +1,18 @@
 <script>
     import { onMount } from 'svelte';
     import Navbar from './../components/Navbar.svelte';
+    import Sidebar from '../components/Sidebar.svelte';
     import FormContainer from './../components/FormContainer/FormContainer.svelte';
     import Footer from './../components/Footer.svelte';
+
+    let widthThreshold = window.innerWidth > 670 ? true : false;
+    let sidebarHidden = true;
+
+    window.addEventListener('resize', (e) => widthThreshold = window.innerWidth < 670 ? false : true);
+
+    const toggleSidebar = () => {
+      sidebarHidden = !sidebarHidden;
+    };
 
     onMount(() => {
         VANTA.FOG({
@@ -24,11 +34,19 @@
 </script>
 
 <div id="main-container">
-    <Navbar navbarActionsNeeded={true} />
+    <Navbar
+        navbarActionsNeeded={true}
+        showSidebarBtn={!widthThreshold}
+        on:toggle-sidebar={toggleSidebar}
+    />
+
+    <Sidebar {sidebarHidden} on:toggle-sidebar={toggleSidebar}/>
 
     <FormContainer />
 
-    <Footer />
+    {#if widthThreshold}
+        <Footer />
+    {/if}
 </div>
 
 <style>

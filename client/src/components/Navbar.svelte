@@ -1,8 +1,14 @@
 <script>
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
+
     import SearchBar from './SearchBar.svelte';
     import WalletBtn from './WalletBtn.svelte';
 
     export let navbarActionsNeeded;
+    export let showSidebarBtn;
+
+    const toggleSidebar = () => dispatch('toggle-sidebar');
 </script>
 
 <div id="navbar">
@@ -19,10 +25,24 @@
     </a>
 
     {#if navbarActionsNeeded}
-        <div id="navbar-actions-container">
-            <SearchBar />
-            <WalletBtn />
-        </div>
+        {#if !showSidebarBtn}
+            <div id="navbar-actions-container">
+                <SearchBar isSidebarBtn={false} />
+                <WalletBtn isSidebarBtn={false} />
+            </div>
+        {:else}
+            <svg
+                id="sidebar-toggle-btn"
+                on:click={toggleSidebar}
+                viewBox="0 0 100 80"
+                width="30"
+                height="30"
+            >
+                <rect width="100" height="20" rx="10" />
+                <rect y="30" width="100" height="20" rx="10" />
+                <rect y="60" width="100" height="20" rx="10" />
+            </svg>
+        {/if}
     {/if}
 </div>
 
@@ -63,6 +83,17 @@
         flex-direction: row;
         float: right;
         top: 12.5px;
+    }
+
+    #sidebar-toggle-btn {
+        position: relative;
+        float: right;
+        top: 22px;
+        cursor: pointer;
+    }
+
+    #sidebar-toggle-btn rect {
+        border-radius: 10px;
     }
 
     @media (max-width: 1300px) {

@@ -14,15 +14,18 @@ import binary from 'bops';
 
 import { get } from 'svelte/store';
 import { wallet, registerData } from '../../store/store';
-import { connectionConfig, programID} from '../../store/env.store';
+import { connectionConfig, programID } from '../../store/env.store';
 
 import { SOLBOND_ACCOUNT_DATA_LAYOUT, SolbondLayout } from '../utils/solbond.layout';
 import type { RegisterData, ConnectionConfig } from '../utils/general.interfaces';
 
 import { snackbarController } from '../controllers/snackbar.controller';
 
-const connectionConfigRef: ConnectionConfig = get(connectionConfig)
-const connection: Connection = new Connection(connectionConfigRef.endpoint, connectionConfigRef.commitent);
+const connectionConfigRef: ConnectionConfig = get(connectionConfig);
+const connection: Connection = new Connection(
+    connectionConfigRef.endpoint,
+    connectionConfigRef.commitent
+);
 
 export const registerSolbond = async () => {
     const walletRef: Wallet = get(wallet);
@@ -59,14 +62,14 @@ export const registerSolbond = async () => {
     await transaction.sign([solbondAccount]);
     let signedTransaction: Transaction = await walletRef.signTransaction(transaction);
 
-    snackbarController("loading", "Sending Transaction...");
+    snackbarController('loading', 'Sending Transaction...');
 
     let transactionSig = await connection.sendRawTransaction(signedTransaction.serialize());
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     await connection.confirmTransaction(transactionSig);
- 
+
     return `transactionSig: ${transactionSig}, solbondAddress: ${solbondAccount.publicKey.toBase58()}`;
 };
 

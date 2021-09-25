@@ -1,9 +1,4 @@
-import {
-    Connection,
-    PublicKey,
-    Transaction,
-    TransactionInstruction,
-} from '@solana/web3.js';
+import { Connection, PublicKey, Transaction, TransactionInstruction } from '@solana/web3.js';
 
 import type Wallet from '@project-serum/sol-wallet-adapter';
 import BN from 'bn.js';
@@ -11,15 +6,18 @@ import binary from 'bops';
 
 import { get } from 'svelte/store';
 import { wallet, validateData } from '../../store/store';
-import { connectionConfig, programID} from '../../store/env.store';
+import { connectionConfig, programID } from '../../store/env.store';
 
 import { SOLBOND_ACCOUNT_DATA_LAYOUT, SolbondLayout } from '../utils/solbond.layout';
 import type { ConnectionConfig, ValidateData } from '../utils/general.interfaces';
 
 import { snackbarController } from '../controllers/snackbar.controller';
 
-const connectionConfigRef: ConnectionConfig = get(connectionConfig)
-const connection: Connection = new Connection(connectionConfigRef.endpoint, connectionConfigRef.commitent);
+const connectionConfigRef: ConnectionConfig = get(connectionConfig);
+const connection: Connection = new Connection(
+    connectionConfigRef.endpoint,
+    connectionConfigRef.commitent
+);
 
 export const validateSolbond = async () => {
     const walletRef: Wallet = get(wallet);
@@ -47,7 +45,7 @@ export const validateSolbond = async () => {
 
     let signedTransaction: Transaction = await walletRef.signTransaction(transaction);
 
-    snackbarController("loading", "Sending Transaction...");
+    snackbarController('loading', 'Sending Transaction...');
 
     let transactionSig = await connection.sendRawTransaction(signedTransaction.serialize());
 

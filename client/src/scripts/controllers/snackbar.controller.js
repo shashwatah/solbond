@@ -44,7 +44,7 @@ const typeSpecificData = {
 
             ele.style.opacity = 0;
 
-            snackbarController("success", "Solbond data was saved!")
+            snackbarController('success', 'Solbond data was saved!');
         },
     },
 };

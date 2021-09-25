@@ -1,7 +1,7 @@
 <script>
     import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
-    
+
     import SearchBar from './SearchBar.svelte';
     import WalletBtn from './WalletBtn.svelte';
 
@@ -10,7 +10,7 @@
     const toggleSidebar = () => dispatch('toggle-sidebar');
 </script>
 
-<div id="sidebar" class={sidebarHidden ? "hidden" : ""}>
+<div id="sidebar" class={sidebarHidden ? 'hidden' : ''}>
     <svg
         id="sidebar-toggle-btn"
         on:click={toggleSidebar}

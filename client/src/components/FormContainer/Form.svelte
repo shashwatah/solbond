@@ -287,4 +287,33 @@
             margin-right: calc(10% + 50px);
         }
     }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+        .inactive {
+            width: 95%;
+        }
+
+        .form-page-title {
+            font-size: 25px;
+            left: 0px;
+            top: 65px;
+        }
+        .form-page-input {
+            left: 00px;
+            width: calc(100% - 40px);
+            font-size: 20px;
+        }
+
+        #soul-color-text {
+            width: calc(100% - 140px);
+        }
+
+        #back-nav {
+            margin-left: calc(5% + 20px);
+        }
+
+        #next-nav {
+            margin-right: calc(5% + 20px);
+        }
+    }
 </style>

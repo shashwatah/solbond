@@ -1,10 +1,16 @@
 <script>
     export let isSidebarBtn;
-    let extraClass = isSidebarBtn ? "sidebar-btn" : "";
+    let extraClass = isSidebarBtn ? 'sidebar-btn' : '';
 </script>
 
 <form method="GET" action="/cert">
-    <input class="navbar-action {extraClass}" id="search-bar" type="text" name="search" placeholder="Search.." />
+    <input
+        class="navbar-action {extraClass}"
+        id="search-bar"
+        type="text"
+        name="search"
+        placeholder="Search.."
+    />
 </form>
 
 <style>
@@ -46,7 +52,7 @@
     }
 
     .sidebar-btn {
-        background: white !important;      
+        background: white !important;
         background-image: url('../assets/images/search.webp') !important;
         background-position: 20px 25px !important;
         background-repeat: no-repeat !important;

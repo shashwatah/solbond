@@ -121,7 +121,7 @@
         }
 
         #btns-container {
-            width: 35%;
+            width: 65%;
             top: 125px;
         }
 
@@ -133,6 +133,18 @@
         #btns-container .btn-container:nth-child(2) {
             margin-left: 0px;
             margin-top: 25px;
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+        #title {
+            top: 75px;
+            font-size: 45px;
+        }
+
+        #btns-container {
+            width: 75%;
+            top: 125px;
         }
     }
 </style>

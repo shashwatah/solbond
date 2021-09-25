@@ -8,10 +8,13 @@
     let widthThreshold = window.innerWidth > 670 ? true : false;
     let sidebarHidden = true;
 
-    window.addEventListener('resize', (e) => widthThreshold = window.innerWidth < 670 ? false : true);
+    window.addEventListener(
+        'resize',
+        (e) => (widthThreshold = window.innerWidth < 670 ? false : true)
+    );
 
     const toggleSidebar = () => {
-      sidebarHidden = !sidebarHidden;
+        sidebarHidden = !sidebarHidden;
     };
 
     onMount(() => {
@@ -40,7 +43,7 @@
         on:toggle-sidebar={toggleSidebar}
     />
 
-    <Sidebar {sidebarHidden} on:toggle-sidebar={toggleSidebar}/>
+    <Sidebar {sidebarHidden} on:toggle-sidebar={toggleSidebar} />
 
     <FormContainer />
 

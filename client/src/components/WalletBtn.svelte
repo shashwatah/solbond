@@ -3,14 +3,14 @@
     import { walletBtnValue } from './../store/store';
 
     export let isSidebarBtn;
-    let extraClass = isSidebarBtn ? "sidebar-btn" : "";
+    let extraClass = isSidebarBtn ? 'sidebar-btn' : '';
 
     const walletBtnController = async () => await toggleWallet();
 </script>
 
-<button id="connect-wallet-btn" class="{extraClass}" on:click={walletBtnController}>
+<button id="connect-wallet-btn" class={extraClass} on:click={walletBtnController}>
     <img
-        src="assets/images/wallet{isSidebarBtn ? "_sidebar" : ""}.webp"
+        src="assets/images/wallet{isSidebarBtn ? '_sidebar' : ''}.webp"
         type="image/webp"
         id="connect-wallet-btn-ico"
         draggable="false"
@@ -52,7 +52,7 @@
 
     .sidebar-btn {
         background: white !important;
-        color: #0d0533! important;
+        color: #0d0533 !important;
         height: 75px !important;
         width: 100% !important;
         font-size: 20px !important;

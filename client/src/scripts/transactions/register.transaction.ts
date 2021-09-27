@@ -16,7 +16,7 @@ import { get } from 'svelte/store';
 import { wallet, registerData } from '../../store/store';
 import { connectionConfig, programID } from '../../store/env.store';
 
-import { SOLBOND_ACCOUNT_DATA_LAYOUT, SolbondLayout } from '../utils/solbond.layout';
+import { SOLBOND_ACCOUNT_DATA_LAYOUT } from '../utils/solbond.layout';
 import type { RegisterData, ConnectionConfig } from '../utils/general.interfaces';
 
 import { snackbarController } from '../controllers/snackbar.controller';

@@ -1,9 +1,17 @@
 <script>
+    import router from 'page';
+
     export let isSidebarBtn;
     let extraClass = isSidebarBtn ? 'sidebar-btn' : '';
+
+    const handleSubmit = (e) => {
+        const searchQuery = new FormData(e.target).get('search');
+
+        router.redirect(`/certificate/${searchQuery}`);
+    };
 </script>
 
-<form method="GET" action="/cert">
+<form id="search-form" on:submit|preventDefault={handleSubmit}>
     <input
         class="navbar-action {extraClass}"
         id="search-bar"

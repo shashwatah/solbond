@@ -1,21 +1,24 @@
 <script>
+    export let certificateData;
 </script>
 
 <fieldset id="certificate">
-    <p class="cert-text" id="cert-header">This is to certify that,</p>
-    <p id="cert-names">
-        <span class="name" id="spouse1name">Han Solo </span> and
-        <span class="name" id="spouse2name">Leia Organa</span>
-    </p>
-    <p class="cert-text">were united in holy matrimony</p>
-    <p id="time-line">
-        on <span class="time">4th Sept, 2021</span> at <span class="time">3:19 PM</span>
-    </p>
-    <p id="cert-footer">
-        01110100 01101001 01101100 01101100 00100000 01100100 01100101 01100001 01110100 01101000
-        00100000 01100100 01101111 00100000 01110101 01110011 00100000 01110000 01100001 01110010
-        01110100
-    </p>
+    {#if certificateData !== null}
+        <p class="cert-text" id="cert-header">This is to certify that,</p>
+        <p id="cert-names">
+            <span class="name" id="spouse1name">{certificateData.spouse1Name} </span> and
+            <span class="name" id="spouse2name">{certificateData.spouse2Name}</span>
+        </p>
+        <p class="cert-text">were united in holy matrimony</p>
+        <p id="time-line">
+            on <span class="time">{certificateData.timestamp}</span>
+        </p>
+        <p id="cert-footer">
+            01110100 01101001 01101100 01101100 00100000 01100100 01100101 01100001 01110100
+            01101000 00100000 01100100 01101111 00100000 01110101 01110011 00100000 01110000
+            01100001 01110010 01110100
+        </p>
+    {/if}
 </fieldset>
 
 <style>
@@ -36,7 +39,6 @@
 
     .cert-text {
         font-size: 30px;
-        /* font-weight: bold; */
     }
 
     #cert-header {
@@ -77,5 +79,45 @@
         font-weight: bold;
         color: rgba(0, 0, 0, 0.3);
         word-spacing: 2px;
+    }
+
+    @media (max-width: 1300px) {
+        #certificate {
+            width: calc(100% - 100px);
+        }
+    }
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 1024px) {
+        .cert-text {
+            font-size: 25px;
+        }
+
+        #cert-header {
+            margin-top: 100px;
+            margin-bottom: 30px;
+        }
+
+        #cert-names {
+            margin-top: 0px;
+            font-size: 25px;
+        }
+
+        .name {
+            font-size: 30px;
+        }
+
+        #time-line {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+
+        .time {
+            font-size: 22px;
+        }
+
+        #cert-footer {
+            margin-top: 85px;
+            font-size: 8px;
+        }
     }
 </style>

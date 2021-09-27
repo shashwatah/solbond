@@ -1,7 +1,15 @@
 <script>
     import { onMount } from 'svelte';
+
     import Navbar from './../components/Navbar.svelte';
     import Certificate from './../components/Certificate.svelte';
+
+    import { queryController } from './../scripts/controllers/query.controller';
+    import { handleError } from '../scripts/controllers/error.controller';
+    import { snackbarController } from '../scripts/controllers/snackbar.controller';
+
+    export let params;
+    let certificateData = null;
 
     onMount(() => {
         const effect = VANTA.FOG({
@@ -20,18 +28,29 @@
             zoom: 1.4,
         });
 
-        // setTimeout(() => {
-        //   effect.setOptions({
-        //     highlightColor: 0xffc300,
-        //     midtoneColor: 0xff1f00,
-        //     lowlightColor: 0x2d00ff,
-        //   });
-        // }, 10000);
+        snackbarController('loading', 'Querying...');
+
+        queryController(params.query)
+            .then((data) => {
+                snackbarController('success', 'Data Retrieved');
+
+                certificateData = {
+                    spouse1Name: data.spouse1Name.replace('\x00', ''),
+                    spouse2Name: data.spouse2Name.replace('\x00', ''),
+                    timestamp: new Date(data.timestamp).toUTCString(),
+                };
+
+                effect.setOptions({
+                    highlightColor: parseInt(data.spouse1SoulColor, 16),
+                    lowlightColor: parseInt(data.spouse2SoulColor, 16),
+                });
+            })
+            .catch((err) => handleError(err));
     });
 </script>
 
 <div id="main-container">
-    <Navbar navbarActionsNeeded={false} />
+    <Navbar navbarActionsNeeded={false} showSidebarBtn={false} />
 
-    <Certificate />
+    <Certificate {certificateData} />
 </div>

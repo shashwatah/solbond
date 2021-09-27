@@ -9,6 +9,16 @@ const errors = {
     TransactionError: { message: 'Transaction resulted in an error', type: 'error' },
     RegisterError: { message: 'Something went wrong while registering the solbond', type: 'error' },
     ValidateError: { message: 'Something went wrong while validating the solbond', type: 'error' },
+    QueryError: {
+        message: 'Query resulted in an error, Redirecting...',
+        type: 'error',
+        redirect: true,
+    },
+    SolbondInvalid: {
+        message: "This Solbond hasn't been validated yet, Redirecting...",
+        type: 'warning',
+        redirect: true,
+    },
 };
 
 export const generateError = (type) => {
@@ -19,6 +29,8 @@ export const generateError = (type) => {
 
 export const handleError = (err) => {
     if (!err.name in errors || errors[err.name].type === 'error') console.error(err);
+
+    if (errors[err.name].redirect) setTimeout(() => (window.location.href = '/'), 2000);
 
     if (err.name in errors) return snackbarController(errors[err.name].type, err.message);
 

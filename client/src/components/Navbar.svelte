@@ -15,7 +15,7 @@
     <a href="/"
         ><p id="navbar-title">
             <img
-                src="assets/images/solbond-logo.webp"
+                src="../assets/images/solbond-logo.webp"
                 type="image/webp"
                 id="navbar-title-icon"
                 draggable="false"

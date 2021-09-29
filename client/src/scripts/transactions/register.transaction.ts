@@ -59,10 +59,10 @@ export const registerSolbond = async () => {
     // Making tsc ignore an error here, since the syntax is in fact right
     // Error: Argument of type 'Keypair[]' is not assignable to parameter of type 'Signer'. Type 'Keypair[]' is missing the following properties from type 'Signer': publicKey, secretKey
     // @ts-ignore
-    await transaction.sign([solbondAccount]);
+    await transaction.sign(solbondAccount);
     let signedTransaction: Transaction = await walletRef.signTransaction(transaction);
 
-    snackbarController('loading', 'Sending Transaction...');
+    snackbarController('loading', 'Sending Transaction, This might take a minute...');
 
     let transactionSig = await connection.sendRawTransaction(signedTransaction.serialize());
 

@@ -45,7 +45,7 @@ export const validateSolbond = async () => {
 
     let signedTransaction: Transaction = await walletRef.signTransaction(transaction);
 
-    snackbarController('loading', 'Sending Transaction...');
+    snackbarController('loading', 'Sending Transaction, This might take a minute...');
 
     let transactionSig = await connection.sendRawTransaction(signedTransaction.serialize());
 

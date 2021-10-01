@@ -24,7 +24,7 @@ An on-chain wedding registry dApp built on Solana with <a href="https://www.rust
   <a href="#prerequisites">Prerequisites</a> •
   <a href="#installation">Setup</a> •
   <a href="#deployment">Deployment</a> •
-  <a href="#refs">Refs</a> •
+  <a href="#references">References</a> •
   <a href="#authors">Authors</a> •
   <a href="#license">License</a>
 </p>
@@ -34,7 +34,7 @@ An on-chain wedding registry dApp built on Solana with <a href="https://www.rust
 
 ## About
 
-This project was made as a submission for the on-chain wedding track by Superpumped on the Building out Loud Hackathon by Solana.
+This project was made as a submission for the on-chain wedding track by [Superpumped](https://www.youtube.com/channel/UCi-pkXLbm7sqXFhV1NBLUfQ) in the 'Building out Loud' Hackathon by Solana.
 This repo contains code for both, the Solana Program built with Rust and the client built with Svelte, JavaScript and TypeScript.
 
 ## Notes
@@ -46,7 +46,7 @@ This repo contains code for both, the Solana Program built with Rust and the cli
     - Shared assets account - The solana program already creates an account to store each solbond's state, the same account can be used as shared asset accounts.
     - Annulment - Upon annulment the above mentioned account can be dissolved and the assets can be divided among the partners.
     - KYC - on-chain or off-chain KYC is needed to make a dApp that solves this particular problem, legally viable.
-
+    
 ## Prerequisites
 
 #### for running the dApp locally:
@@ -78,13 +78,13 @@ Solbond's client is currently deployed on Vercel, and the program is deployed on
 <br/>
 Click [here](https://solbond.vercel.app) to visit.
 
-## Refs
+## References
 
 - Paul Shcaaf's Escrow Program: [https://github.com/paul-schaaf/solana-escrow/tree/master/program](https://github.com/paul-schaaf/solana-escrow/tree/master/program)
 
 - Paul Schaaf's Escrow Client: [https://github.com/paul-schaaf/escrow-ui](https://github.com/paul-schaaf/escrow-ui)
 
-- Claude Barde's 'Get Married on the Blockchain' medium article: [https://medium.com/coinmonks/get-married-on-the-blockchain-25091f12399b](https://medium.com/coinmonks/get-married-on-the-blockchain-25091f12399b)
+- Claude Barde's 'Get Married on the Blockchain!' medium article: [https://medium.com/coinmonks/get-married-on-the-blockchain-25091f12399b](https://medium.com/coinmonks/get-married-on-the-blockchain-25091f12399b)
 
 - Solana Program Library: [https://github.com/solana-labs/solana-program-library](https://github.com/solana-labs/solana-program-library)
 

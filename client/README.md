@@ -61,9 +61,9 @@ $ npm install
 You'll need to build and deploy the program before continuing. To do so, go through the [Program README](https://github.com/Araekiel/solbond/tree/master/program#readme). In case you wish to use the program already deployed on devnet, take note of the following specs: 
 
 ```js
-solana_network_endpoint: https://api.devnet.solana.com
-solana_network_commitment: processed (you can change this as per your wish) 
-program_id: 437pvxJrLfiZefAR3skQGrPZe7nXzPrJ4SMMnmhfkSav
+solana_network_endpoint = "https://api.devnet.solana.com"
+solana_network_commitment = "processed" // you can change this as per your wish
+program_id = "437pvxJrLfiZefAR3skQGrPZe7nXzPrJ4SMMnmhfkSav"
 ```
 
 Make a file called **env.store.js** in **src/store** directory. Within this file write the following code:

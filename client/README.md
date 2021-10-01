@@ -58,7 +58,15 @@ $ npm install
 
 ## Configuration 
 
-Make a file called *env.store.js* in *src/store* directory. Within this file write the following code:
+You'll need to build and deploy the program before continuing, unless you want to use the program already deployed on devnet, in which case take note of the following specs: 
+
+```
+solana_network_endpoint: https://api.devnet.solana.com
+solana_network_commitment: processed (you can change this as per your wish) 
+program_id: 437pvxJrLfiZefAR3skQGrPZe7nXzPrJ4SMMnmhfkSav
+```
+
+Make a file called **env.store.js** in **src/store** directory. Within this file write the following code:
 
 ```js
 import { readable } from 'svelte/store';
@@ -73,7 +81,7 @@ export const programID = readable(*program_id_of_deployed_program*);
 
 ## Run & Build
 
-> Change the port in the *start* script within *package.json*. Default port is *108*.
+> Change the port in the **start** script within **package.json**. Default port is **_108_**.
 
 Run the client with the following command:
 

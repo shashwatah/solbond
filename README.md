@@ -40,19 +40,19 @@ This repo contains code for both, the Solana Program built with Rust and the cli
 ## Notes
 
 - Future Updates
-    - Any error encountered when sending a transaction, e.g. Not enough balance in the wallet, displays the same, vague error message: 'Transaction resulted in an error'. I'll fix this later. 
+    - Any error encountered when sending a transaction, e.g. not enough balance in the wallet, displays the same, vague error message: 'Transaction resulted in an error'. I'll fix this later. 
 
 - Possible features that could be added to an on-chain wedding dApp but do not exist on Solbond:
-    - Shared assets account - The solana program already creates accounts to store data for the Solbonds, the same accounts can be  used as shared asset accounts.
+    - Shared assets account - The solana program already creates an account for each solbond's state, the same account can be used as shared asset accounts.
     - Annulment - Upon annulment the above mentioned solbond account can be dissolved and the assets can be divided among the partners.
-    - KYC - Something on the lines of on-chain KYC is needed to make a dApp that solves this particular problem, viable.
+    - KYC - on-chain or off-chain KYC is needed to make a dApp that solves this particular problem, legally viable.
 
 ## Prerequisites
 
-### for running the dApp locally:
+#### for running the dApp locally:
 
 - General 
-    - Git is need to clone repository on your machine.
+    - Git is need to clone the repository on your machine.
 
 - Client: 
     - npm is needed to install packages.
@@ -60,6 +60,10 @@ This repo contains code for both, the Solana Program built with Rust and the cli
 
 - Program 
     - Solana Command Line Tools are needed to build the program and run a test-validator.
+
+#### for using the dApp:
+
+- 2 Sollet wallets are needed to use the dApp. Currently only sollet is supported by solbond.
 
 ## Setup 
 

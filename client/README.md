@@ -12,16 +12,14 @@ This folder contains the code for Solbond's client built with Svelte, JavaScript
 
 ## Prerequisites
 
-- Git is need to clone the repository on your machine.
 - npm is needed to install packages.
 - Node.js is needed to run Solbond.
 
 ### Ubuntu
 
-Install git, Node.js and npm on your machine running Ubuntu:
+Install Node.js and npm on your machine running Ubuntu:
 
 ```bash
-$ sudo apt-get install git-core
 $ sudo apt install nodejs
 $ sudo apt install npm
 ```
@@ -29,26 +27,17 @@ $ sudo apt install npm
 
 Use the official links for downloading on Windows:
 
-- [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/en/download/)
 - [npm](https://www.npmjs.com/get-npm)
 
 Run the following commands to confirm if the installation was successful:
 
 ```bash
-$ git --version
 $ node --version
 $ npm --version 
 ```
 
 ## Installation
-
-Clone the repo and cd into the directory: 
-
-```bash
-$ git clone https://github.com/Araekiel/solbond.git
-$ cd gitwiz 
-```
 
 Then install the node-modules in package.json:
 

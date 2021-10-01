@@ -35,7 +35,7 @@ An on-chain wedding registry dApp built on Solana with <a href="https://www.rust
 ## About
 
 This project was made as a submission for the on-chain wedding track by [Superpumped](https://www.youtube.com/channel/UCi-pkXLbm7sqXFhV1NBLUfQ) in the 'Building out Loud' Hackathon by Solana.
-This repo contains code for both, the Solana Program built with Rust and the client built with Svelte, JavaScript and TypeScript.
+This repo contains code for both, the Solana Program built with Rust and the client built with Svelte, JavaScript, and TypeScript.
 
 ## Notes
 
@@ -46,7 +46,7 @@ This repo contains code for both, the Solana Program built with Rust and the cli
     - Shared assets account - The solana program already creates an account to store each solbond's state, the same account can be used as shared asset accounts.
     - Annulment - Upon annulment the above mentioned account can be dissolved and the assets can be divided among the partners.
     - KYC - on-chain or off-chain KYC is needed to make a dApp that solves this particular problem, legally viable.
-    
+
 ## Prerequisites
 
 #### for running the dApp locally:

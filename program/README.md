@@ -35,10 +35,11 @@ cargo build-bpf
 To deploy the program: 
 
 - Make sure your solana cli config is set to the endpoint you desire.
-- Make sure your wallet has enough *_SOL_*, if not, airdrop enough. 
+- Make sure your wallet has enough *_SOL_*, if not, airdrop what is needed. 
 - Run the following command: 
 
 ```bash
 solana program deploy *path_to_.so_file*
 ```
 
+- Note the Program ID. It will be needed when running the Client.

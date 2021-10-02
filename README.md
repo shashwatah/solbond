@@ -42,7 +42,7 @@ This repo contains code for both, the Solana Program built with Rust and the cli
 - Future Updates
     - Any error encountered when sending a transaction, e.g. not enough balance in the wallet, displays the same, vague error message: 'Transaction resulted in an error'. I'll fix this later. 
 
-- Possible features that could be added to an on-chain wedding dApp but do not exist on Solbond:
+- Features expected to be on an on-chain wedding dApp but do not exist on Solbond:
     - Shared assets account - The solana program already creates an account to store each solbond's state, the same account can be used as shared asset accounts.
     - Annulment - Upon annulment the above mentioned account can be dissolved and the assets can be divided among the partners.
     - KYC - on-chain or off-chain KYC is needed to make a dApp that solves this particular problem, legally viable.

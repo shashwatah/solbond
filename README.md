@@ -59,7 +59,7 @@ This repo contains code for both, the Solana Program built with Rust and the cli
     - Node.js is needed to run the client.
 
 - Program 
-    - Solana Command Line Tools are needed to build the program and run a test-validator.
+    - Rust and Solana CLI tools are needed to build the program and run a test-validator.
 
 #### for using the dApp:
 

@@ -63,7 +63,7 @@ This repo contains code for both, the Solana Program built with Rust and the cli
 
 #### for using the dApp:
 
-- 2 Sollet wallets are needed to use the dApp. Currently only sollet is supported by solbond.
+- 2 Sollet wallets are needed to use the dApp (Only sollet is supported currently).
 
 ## Setup 
 

@@ -15,10 +15,10 @@ This folder contains the code for Solbond's solana program built with Rust.</h4>
 
 #### Install the requisites:
 
-- Install Rust from [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install)
-- Install Solana CLI tools by following the tutorial at [https://docs.solana.com/cli/install-solana-cli-tools](https://docs.solana.com/cli/install-solana-cli-tools)
+- Install Rust from [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install).
+- Install Solana CLI tools by following the tutorial at [https://docs.solana.com/cli/install-solana-cli-tools](https://docs.solana.com/cli/install-solana-cli-tools).
 
-> WSL is recommended if you are using Windows. To install and setup WSL 2 follow the tutorial at [https://docs.solana.com/cli/install-solana-cli-tools](https://docs.solana.com/cli/install-solana-cli-tools)
+> WSL is recommended if you are using Windows. To install and setup WSL 2 follow the tutorial at [https://docs.solana.com/cli/install-solana-cli-tools](https://docs.solana.com/cli/install-solana-cli-tools).
 
 ## Build & Deploy 
 
@@ -34,7 +34,7 @@ cargo build-bpf
 
 To deploy the program: 
 
-- Make sure your solana cli config is set to the endpoint you desire.
+- Make sure your Solana CLI config is set to the endpoint you desire.
 - Make sure your wallet has enough *_SOL_*, if not, airdrop what is needed. 
 - Run the following command: 
 

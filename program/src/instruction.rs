@@ -40,6 +40,11 @@ impl SolbondInstruction {
                 let (spouse1_soul_color_slice, __rest) = _rest.split_at(6);
                 let spouse1_soul_color = String::from(from_utf8(spouse1_soul_color_slice).unwrap());
 
+                // This timestamp could have been a u32 instead of u64, that in turn would have 
+                // reduced the rent the user has to pay when registering a solbond by a bit. 
+                // u64 is overkill for a unix timestamp (ms since epoch).
+                // I'm not changing this now, since it'll mess up the solbonds that have already 
+                // been created.
                 let timestamp = __rest.get(..8)
                             .and_then(|slice| slice.try_into().ok())
                             .map(u64::from_le_bytes)

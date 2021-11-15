@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://solbond.vercel.app"><img src="https://github.com/Araekiel/solbond/blob/master/assets/solbond-logo.webp" alt="Solbond" width="200"></a>
+  <a href="https://solbond.vercel.app"><img src="https://github.com/Araekiel/solbond/blob/main/assets/solbond-logo.webp" alt="Solbond" width="200"></a>
   <br>
   Solbond
   <br>

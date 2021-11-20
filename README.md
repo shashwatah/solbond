@@ -30,7 +30,7 @@ An on-chain wedding registry dApp built on Solana with <a href="https://www.rust
 </p>
 
 
-<img alt="Screenshot" src="https://github.com/Araekiel/solbond/blob/master/assets/solbond_ss.jpeg"/>
+<img alt="Screenshot" src="https://github.com/Araekiel/solbond/blob/main/assets/solbond_ss.jpeg"/>
 
 ## About
 

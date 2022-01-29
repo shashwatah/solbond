@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://solbond.vercel.app"><img src="https://github.com/Araekiel/solbond/blob/main/assets/solbond-logo.webp" alt="Solbond" width="200"></a>
+  <a href="https://solbond.vercel.app"><img src="https://github.com/araekiel/solbond/blob/main/assets/solbond-logo.webp" alt="Solbond" width="200"></a>
   <br>
   Solbond
   <br>
@@ -30,7 +30,7 @@ An on-chain wedding registry dApp built on Solana with <a href="https://www.rust
 </p>
 
 
-<img alt="Screenshot" src="https://github.com/Araekiel/solbond/blob/main/assets/solbond_ss.jpeg"/>
+<img alt="Screenshot" src="https://github.com/araekiel/solbond/blob/main/assets/solbond_ss.jpeg"/>
 
 ## About
 

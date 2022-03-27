@@ -13,9 +13,6 @@ An on-chain wedding registry dApp built on Solana with <a href="https://www.rust
 <p align="center">
   <a><img alt="MIT License" src="https://img.shields.io/apm/l/atomic-design-ui.svg?"></a>
   <a><img alt="Vercel Deployment" src="http://therealsujitk-vercel-badge.vercel.app/?app=solbond"/></a>
-  <a href="http://makeapullrequest.com">
-    <img alt="PRs Welcome"src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat">
-  </a>
 </p>
 
 <p align="center">
@@ -31,6 +28,9 @@ An on-chain wedding registry dApp built on Solana with <a href="https://www.rust
 
 
 <img alt="Screenshot" src="https://github.com/araekiel/solbond/blob/main/assets/solbond_ss.jpeg"/>
+<img alt="Screenshot" src="https://github.com/araekiel/solbond/blob/main/assets/han_leia_sb.jpeg"/>
+
+> This solbond exists on the devnet under the address: *A9VTe6uyjrxjJ1uHVjaRnvCoQHYhuyPbd6GqqES1X1as*
 
 ## About
 

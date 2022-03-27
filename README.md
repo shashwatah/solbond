@@ -67,9 +67,9 @@ This repo contains code for both, the Solana Program built with Rust and the cli
 
 ## Setup 
 
-- Follow the [Client README](https://github.com/Araekiel/solbond/tree/master/client#readme) to setup the client.
+- Follow the [Client README](https://github.com/araekiel/solbond/tree/master/client#readme) to setup the client.
 
-- Follow the [Program README](https://github.com/Araekiel/solbond/tree/master/program#readme) to setup the program.
+- Follow the [Program README](https://github.com/araekiel/solbond/tree/master/program#readme) to setup the program.
 
 
 ## Deployment
@@ -90,8 +90,8 @@ Click [here](https://solbond.vercel.app) to visit.
 
 ## Authors
 
-- **Araekiel** - [Github](https://github.com/Araekiel)
+- **araekiel** - [Github](https://github.com/araekiel)
 
 ## License
 
-[MIT License](https://github.com/Araekiel/solbond/blob/master/LICENSE) | Copyright (c) 2021 Kumar Shashwat
+[MIT License](https://github.com/araekiel/solbond/blob/main/LICENSE) | Copyright (c) 2022 Kumar Shashwat

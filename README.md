@@ -30,7 +30,7 @@ An on-chain wedding registry dApp built on Solana with <a href="https://www.rust
 <img alt="Screenshot" src="https://github.com/araekiel/solbond/blob/main/assets/solbond_ss.jpeg"/>
 <img alt="Screenshot" src="https://github.com/araekiel/solbond/blob/main/assets/han_leia_sb.jpeg"/>
 
-> This solbond exists on the devnet under the address: *A9VTe6uyjrxjJ1uHVjaRnvCoQHYhuyPbd6GqqES1X1as*
+> This solbond exists under the address: *A9VTe6uyjrxjJ1uHVjaRnvCoQHYhuyPbd6GqqES1X1as*
 
 ## About
 

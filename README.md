@@ -7,7 +7,7 @@
 </h1>
 
 <h4 align="center">
-An on-chain wedding registry dApp built on Solana with <a href="https://www.rust-lang.org/">Rust</a> and <a href="https://svelte.dev/">Svelte.js</a>.
+On-chain wedding registry dApp built on Solana with <a href="https://www.rust-lang.org/">Rust</a> and <a href="https://svelte.dev/">Svelte.js</a>.
 </h4>
 
 <p align="center">

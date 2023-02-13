@@ -11,7 +11,7 @@ On-chain wedding registry dApp built on Solana with <a href="https://www.rust-la
 </h4>
 
 <p align="center">
-  <a><img alt="MIT License" src="https://img.shields.io/apm/l/atomic-design-ui.svg?"></a>
+  <a href="LICENSE"><img alt="Release" src="https://img.shields.io/badge/license-MIT-green"></a>
   <a><img alt="Vercel Deployment" src="http://therealsujitk-vercel-badge.vercel.app/?app=solbond"/></a>
 </p>
 

@@ -1,18 +1,18 @@
 <h1 align="center">
   <br>
-  <a href="https://solbond.vercel.app"><img src="https://github.com/araekiel/solbond/blob/main/assets/solbond-logo.webp" alt="Solbond" width="200"></a>
+  <a href="https://solbond.vercel.app"><img src="https://raw.githubusercontent.com/shashwatah/solbond/main/assets/solbond-logo.webp" alt="Solbond" width="200"></a>
   <br>
   Solbond
   <br>
 </h1>
 
 <h4 align="center">
-On-chain wedding registry dApp built on Solana with <a href="https://www.rust-lang.org/">Rust</a> and <a href="https://svelte.dev/">Svelte.js</a>.
+An on-chain wedding registry dApp built on Solana with <a href="https://www.rust-lang.org/">Rust</a> and <a href="https://svelte.dev/">Svelte.js</a>.
 </h4>
 
 <p align="center">
   <a href="LICENSE"><img alt="Release" src="https://img.shields.io/badge/license-MIT-green"></a>
-  <a><img alt="Vercel Deployment" src="http://therealsujitk-vercel-badge.vercel.app/?app=solbond"/></a>
+  <a href="https://solbond.vercel.app"><img alt="Vercel Deployment" src="http://therealsujitk-vercel-badge.vercel.app/?app=solbond"/></a>
 </p>
 
 <p align="center">
@@ -22,13 +22,11 @@ On-chain wedding registry dApp built on Solana with <a href="https://www.rust-la
   <a href="#installation">Setup</a> •
   <a href="#deployment">Deployment</a> •
   <a href="#references">References</a> •
-  <a href="#authors">Authors</a> •
   <a href="#license">License</a>
 </p>
 
-
-<img alt="Screenshot" src="https://github.com/araekiel/solbond/blob/main/assets/solbond_ss.jpeg"/>
-<img alt="Screenshot" src="https://github.com/araekiel/solbond/blob/main/assets/han_leia_sb.jpeg"/>
+<img alt="Screenshot" src="https://raw.githubusercontent.com/shashwatah/solbond/main/assets/solbond_ss.jpeg"/>
+<img alt="Screenshot" src="https://raw.githubusercontent.com/shashwatah/solbond/main/assets/han_leia_sb.jpeg"/>
 
 > This solbond exists under the address: *A9VTe6uyjrxjJ1uHVjaRnvCoQHYhuyPbd6GqqES1X1as*
 
@@ -47,6 +45,9 @@ This repo contains code for both, the Solana Program built with Rust and the cli
 - Misc 
     - Any error encountered when sending a transaction, e.g. not enough balance in the wallet, displays the same, vague error message: 'Transaction resulted in an    error'. I'll fix this later.
     - Solbond stores data on-chain, services like arweave and IPFS are (obvious) better alternatives.  
+
+- **Important**:
+  - ***The method of Sollet connection used in this project is deprecated, hence, other than viewing previously created contracts, the project is unusable.***
 
 ## Prerequisites
 
@@ -68,9 +69,9 @@ This repo contains code for both, the Solana Program built with Rust and the cli
 
 ## Setup 
 
-- Follow the [Client README](https://github.com/araekiel/solbond/tree/master/client#readme) to setup the client.
+- Follow the [Client README](https://github.com/shashwatah/solbond/tree/master/client#readme) to setup the client.
 
-- Follow the [Program README](https://github.com/araekiel/solbond/tree/master/program#readme) to setup the program.
+- Follow the [Program README](https://github.com/shashwatah/solbond/tree/master/program#readme) to setup the program.
 
 
 ## Deployment
@@ -89,10 +90,6 @@ Click [here](https://solbond.vercel.app) to visit.
 
 - Solana Program Library: [https://github.com/solana-labs/solana-program-library](https://github.com/solana-labs/solana-program-library)
 
-## Authors
-
-- **araekiel** - [Github](https://github.com/araekiel)
-
 ## License
 
-[MIT License](https://github.com/araekiel/solbond/blob/main/LICENSE) | Copyright (c) 2022 Kumar Shashwat
+[MIT License](https://github.com/shashwatah/solbond/blob/main/LICENSE) | Copyright (c) 2024 Kumar Shashwat

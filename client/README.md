@@ -47,7 +47,7 @@ $ npm install
 
 ## Configuration 
 
-You'll need to build and deploy the program before continuing. To do so, go through the [Program README](https://github.com/Araekiel/solbond/tree/master/program#readme). In case you wish to use the program already deployed on devnet, take note of the following specs: 
+You'll need to build and deploy the program before continuing. To do so, go through the [Program README](https://github.com/shashwatah/solbond/tree/master/program#readme). In case you wish to use the program already deployed on devnet, take note of the following specs: 
 
 ```js
 {

@@ -47,7 +47,7 @@ This repo contains code for both, the Solana Program built with Rust and the cli
     - Solbond stores data on-chain, services like arweave and IPFS are (obvious) better alternatives.  
 
 - **Important**:
-  - ***The method of Sollet connection used in this project is deprecated, hence, other than viewing previously created contracts, the project is unusable.***
+  - ***Solana's 'Sollet' wallet has been discontinued, hence, other than viewing previously created contracts, the project is unusable.***
 
 ## Prerequisites
 
